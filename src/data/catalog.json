@@ -1,0 +1,1437 @@
+{
+ "collections": [
+  {
+   "slug": "acrylic-bangles",
+   "name": "Acrylic Bangles",
+   "blurb": "Durable, non-bendable acrylic with a high-gloss finish.",
+   "story": "The practical one. Acrylic survives travel, children and long days far better than glass, without giving up the shine.",
+   "cover": "acrylic-bangles-acrylic-white.jpg",
+   "order": 0
+  },
+  {
+   "slug": "antique-bangles",
+   "name": "Antique Bangles",
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones.",
+   "story": "Antique-finish pieces in the temple tradition \u2014 Lakshmi motifs, ruby and emerald tones, and the matte oxidised gold that only looks better with age.",
+   "cover": "antique-bangles-lakshmi-floral-drop.jpg",
+   "order": 1
+  },
+  {
+   "slug": "intricate-glass-bangles",
+   "name": "Intricate Glass Bangles",
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room.",
+   "story": "Our most detailed glass work \u2014 each bangle cut and finished by hand, then matched into sets of twelve so the tones sit together perfectly on the wrist.",
+   "cover": "intricate-glass-bangles-aqua.jpg",
+   "order": 2
+  },
+  {
+   "slug": "jelly-bangles",
+   "name": "Jelly Bangles",
+   "blurb": "Translucent, lightweight and endlessly stackable.",
+   "story": "The jelly finish gives a soft, sweet translucency \u2014 light on the wrist and easy to layer three or four sets deep without any weight.",
+   "cover": "jelly-bangles-classic-red.jpg",
+   "order": 3
+  },
+  {
+   "slug": "kashmiri-bangles",
+   "name": "Kashmiri Bangles",
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition.",
+   "story": "Wrapped in coloured thread and finished with stone and gungroo detailing. These are the heirloom pieces \u2014 bought for a wedding, worn for decades.",
+   "cover": "kashmiri-bangles-blue-and-yellow.jpg",
+   "order": 4
+  },
+  {
+   "slug": "pastel-palette",
+   "name": "Pastel Palette",
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions.",
+   "story": "Built for the days that are not weddings. Muted enough for work, pretty enough that you will not want to take them off afterwards.",
+   "cover": "pastel-palette-apricot.jpg",
+   "order": 5
+  },
+  {
+   "slug": "petal-stone-bangles",
+   "name": "Petal Stone Bangles",
+   "blurb": "Petal-set stones in a continuous band of colour and light.",
+   "story": "Every stone is seated by hand in a petal-shaped bed. It is slow work, which is why these arrive in smaller batches than the rest.",
+   "cover": "petal-stone-bangles-assorted.jpg",
+   "order": 6
+  },
+  {
+   "slug": "phool-glass-bangles",
+   "name": "Phool Glass Bangles",
+   "blurb": "A raised floral motif running the full circumference in soft relief.",
+   "story": "Phool means flower. The motif is pressed into the glass while it is still warm, so the pattern is part of the bangle rather than sitting on top of it.",
+   "cover": "phool-glass-bangles-champagne.jpg",
+   "order": 7
+  },
+  {
+   "slug": "side-bangles",
+   "name": "Side Bangles",
+   "blurb": "Kundan, pearl and stone bangles to flank a stack.",
+   "story": "Designed to frame. A side bangle sits at either end of a stack and finishes it, the way a border finishes a saree.",
+   "cover": "side-bangles-gold-stone-pearl-bangles.jpg",
+   "order": 8
+  },
+  {
+   "slug": "square-edge-glass-bangles",
+   "name": "Square Edge Glass Bangles",
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin.",
+   "story": "The squared edge is deceptively hard to get right. It gives a sharper line than a rounded bangle and a quieter shine \u2014 the one our regulars keep coming back for.",
+   "cover": "square-edge-glass-bangles-aqua.jpg",
+   "order": 9
+  },
+  {
+   "slug": "statement-bangles",
+   "name": "Statement Bangles",
+   "blurb": "Single, substantial pieces made to be the whole outfit.",
+   "story": "Worn one at a time. Heavier, wider and deliberately loud \u2014 the piece someone asks you about across the room.",
+   "cover": "statement-bangles-enamel-lakshmi.jpg",
+   "order": 10
+  }
+ ],
+ "products": [
+  {
+   "id": "acrylic-bangles-acrylic-white",
+   "collection": "acrylic-bangles",
+   "collectionName": "Acrylic Bangles",
+   "name": "Acrylic White",
+   "colour": "Acrylic White",
+   "price": 350,
+   "pieces": 12,
+   "image": "acrylic-bangles-acrylic-white.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Durable, non-bendable acrylic with a high-gloss finish."
+  },
+  {
+   "id": "antique-bangles-lakshmi-floral-drop",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Lakshmi Floral Drop",
+   "colour": "Lakshmi Floral Drop",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-lakshmi-floral-drop.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "antique-bangles-lakshmi-gold-ruby-emerald",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Lakshmi Gold Ruby Emerald",
+   "colour": "Lakshmi Gold Ruby Emerald",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-lakshmi-gold-ruby-emerald.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "antique-bangles-lakshmi-stone",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Lakshmi Stone",
+   "colour": "Lakshmi Stone",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-lakshmi-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "antique-bangles-peacock",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Peacock",
+   "colour": "Peacock",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-peacock.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "antique-bangles-pearl-floral-square",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Pearl Floral Square",
+   "colour": "Pearl Floral Square",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-pearl-floral-square.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "antique-bangles-rani-pink-diamond-cut",
+   "collection": "antique-bangles",
+   "collectionName": "Antique Bangles",
+   "name": "Rani Pink Diamond Cut",
+   "colour": "Rani Pink Diamond Cut",
+   "price": 499,
+   "pieces": 1,
+   "image": "antique-bangles-rani-pink-diamond-cut.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Oxidised gold-tone work with temple motifs and set stones."
+  },
+  {
+   "id": "intricate-glass-bangles-aqua",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Aqua",
+   "colour": "Aqua",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-aqua.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-assorted",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Assorted",
+   "colour": "Assorted",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-assorted.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-champagne-gold",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Champagne Gold",
+   "colour": "Champagne Gold",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-champagne-gold.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-mocha",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Mocha",
+   "colour": "Mocha",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-mocha.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-peach",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Peach",
+   "colour": "Peach",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-peach.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-rose-pink",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Rose Pink",
+   "colour": "Rose Pink",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-rose-pink.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-royal-blue",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Royal Blue",
+   "colour": "Royal Blue",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-royal-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-sky-blue",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Sky Blue",
+   "colour": "Sky Blue",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-sky-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-tangerine",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Tangerine",
+   "colour": "Tangerine",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-tangerine.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "intricate-glass-bangles-velvet-purple",
+   "collection": "intricate-glass-bangles",
+   "collectionName": "Intricate Glass Bangles",
+   "name": "Velvet Purple",
+   "colour": "Velvet Purple",
+   "price": 499,
+   "pieces": 12,
+   "image": "intricate-glass-bangles-velvet-purple.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Fine-cut glass with a hand-set sparkle that catches every light in the room."
+  },
+  {
+   "id": "jelly-bangles-classic-red",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Classic Red",
+   "colour": "Classic Red",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-classic-red.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-dark-green",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Dark Green",
+   "colour": "Dark Green",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-dark-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-light-green",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Light Green",
+   "colour": "Light Green",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-light-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-multicolored",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Multicolored",
+   "colour": "Multicolored",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-multicolored.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-orange",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Orange",
+   "colour": "Orange",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-orange.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-sky-blue",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Sky Blue",
+   "colour": "Sky Blue",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-sky-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "jelly-bangles-teal",
+   "collection": "jelly-bangles",
+   "collectionName": "Jelly Bangles",
+   "name": "Teal",
+   "colour": "Teal",
+   "price": 350,
+   "pieces": 12,
+   "image": "jelly-bangles-teal.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Translucent, lightweight and endlessly stackable."
+  },
+  {
+   "id": "kashmiri-bangles-blue-and-yellow",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "Blue and Yellow",
+   "colour": "Blue and Yellow",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-blue-and-yellow.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "kashmiri-bangles-golden-stone",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "Golden Stone",
+   "colour": "Golden Stone",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-golden-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "kashmiri-bangles-long-hanging-gunghroo",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "Long Hanging Gunghroo",
+   "colour": "Long Hanging Gunghroo",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-long-hanging-gunghroo.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "kashmiri-bangles-orange-and-brown",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "Orange and Brown",
+   "colour": "Orange and Brown",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-orange-and-brown.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "kashmiri-bangles-red-and-yellow",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "Red and Yellow",
+   "colour": "Red and Yellow",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-red-and-yellow.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "kashmiri-bangles-white-stone",
+   "collection": "kashmiri-bangles",
+   "collectionName": "Kashmiri Bangles",
+   "name": "White Stone",
+   "colour": "White Stone",
+   "price": 499,
+   "pieces": 12,
+   "image": "kashmiri-bangles-white-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Ornate thread and stone work in the Kashmiri tradition."
+  },
+  {
+   "id": "pastel-palette-apricot",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Apricot",
+   "colour": "Apricot",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-apricot.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "pastel-palette-assorted",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Assorted",
+   "colour": "Assorted",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-assorted.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "pastel-palette-champagne",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Champagne",
+   "colour": "Champagne",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-champagne.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "pastel-palette-parrot-green",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Parrot Green",
+   "colour": "Parrot Green",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-parrot-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "pastel-palette-pista",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Pista",
+   "colour": "Pista",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-pista.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "pastel-palette-sky-blue",
+   "collection": "pastel-palette",
+   "collectionName": "Pastel Palette",
+   "name": "Sky Blue",
+   "colour": "Sky Blue",
+   "price": 499,
+   "pieces": 12,
+   "image": "pastel-palette-sky-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Soft, powdery tones for everyday wear and daytime occasions."
+  },
+  {
+   "id": "petal-stone-bangles-assorted",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Assorted",
+   "colour": "Assorted",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-assorted.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-classic-blue",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Classic Blue",
+   "colour": "Classic Blue",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-classic-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-deep-wine",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Deep Wine",
+   "colour": "Deep Wine",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-deep-wine.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-emerald-green",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Emerald Green",
+   "colour": "Emerald Green",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-emerald-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-ivory",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Ivory",
+   "colour": "Ivory",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-ivory.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-magenta",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Magenta",
+   "colour": "Magenta",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-magenta.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-multicolor",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Multicolor",
+   "colour": "Multicolor",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-multicolor.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-mustard-yellow",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Mustard Yellow",
+   "colour": "Mustard Yellow",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-mustard-yellow.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "petal-stone-bangles-parrot-green",
+   "collection": "petal-stone-bangles",
+   "collectionName": "Petal Stone Bangles",
+   "name": "Parrot Green",
+   "colour": "Parrot Green",
+   "price": 499,
+   "pieces": 12,
+   "image": "petal-stone-bangles-parrot-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Petal-set stones in a continuous band of colour and light."
+  },
+  {
+   "id": "phool-glass-bangles-champagne",
+   "collection": "phool-glass-bangles",
+   "collectionName": "Phool Glass Bangles",
+   "name": "Champagne",
+   "colour": "Champagne",
+   "price": 499,
+   "pieces": 12,
+   "image": "phool-glass-bangles-champagne.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A raised floral motif running the full circumference in soft relief."
+  },
+  {
+   "id": "phool-glass-bangles-magenta",
+   "collection": "phool-glass-bangles",
+   "collectionName": "Phool Glass Bangles",
+   "name": "Magenta",
+   "colour": "Magenta",
+   "price": 499,
+   "pieces": 12,
+   "image": "phool-glass-bangles-magenta.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A raised floral motif running the full circumference in soft relief."
+  },
+  {
+   "id": "phool-glass-bangles-mehendi-green",
+   "collection": "phool-glass-bangles",
+   "collectionName": "Phool Glass Bangles",
+   "name": "Mehendi Green",
+   "colour": "Mehendi Green",
+   "price": 499,
+   "pieces": 12,
+   "image": "phool-glass-bangles-mehendi-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A raised floral motif running the full circumference in soft relief."
+  },
+  {
+   "id": "phool-glass-bangles-ruby-red",
+   "collection": "phool-glass-bangles",
+   "collectionName": "Phool Glass Bangles",
+   "name": "Ruby Red",
+   "colour": "Ruby Red",
+   "price": 499,
+   "pieces": 12,
+   "image": "phool-glass-bangles-ruby-red.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A raised floral motif running the full circumference in soft relief."
+  },
+  {
+   "id": "side-bangles-gold-stone-pearl-bangles",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "Gold Stone Pearl Bangles",
+   "colour": "Gold Stone Pearl Bangles",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-gold-stone-pearl-bangles.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "side-bangles-premium-non-bendable-diamond-look-alike-stone-bangles",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "Premium Non-Bendable Diamond Look-Alike Stone Bangles",
+   "colour": "Premium Non-Bendable Diamond Look-Alike Stone Bangles",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-premium-non-bendable-diamond-look-alike-stone-bangles.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "side-bangles-premium-non-bendable-gold-stone-bangles",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "Premium Non-Bendable Gold Stone Bangles",
+   "colour": "Premium Non-Bendable Gold Stone Bangles",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-premium-non-bendable-gold-stone-bangles.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "side-bangles-round-kundan-bangles",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "Round Kundan Bangles",
+   "colour": "Round Kundan Bangles",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-round-kundan-bangles.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "side-bangles-statement-stone-bangle",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "Statement Stone Bangle",
+   "colour": "Statement Stone Bangle",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-statement-stone-bangle.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "side-bangles-white-stone-pearl-bangles",
+   "collection": "side-bangles",
+   "collectionName": "Side Bangles",
+   "name": "White Stone Pearl Bangles",
+   "colour": "White Stone Pearl Bangles",
+   "price": 499,
+   "pieces": 1,
+   "image": "side-bangles-white-stone-pearl-bangles.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Kundan, pearl and stone bangles to flank a stack."
+  },
+  {
+   "id": "square-edge-glass-bangles-aqua",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Aqua",
+   "colour": "Aqua",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-aqua.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-assorted",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Assorted",
+   "colour": "Assorted",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-assorted.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-champagne-gold",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Champagne Gold",
+   "colour": "Champagne Gold",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-champagne-gold.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-classic-red",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Classic Red",
+   "colour": "Classic Red",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-classic-red.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-deep-wine",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Deep Wine",
+   "colour": "Deep Wine",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-deep-wine.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-emerald-green",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Emerald Green",
+   "colour": "Emerald Green",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-emerald-green.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-lavender",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Lavender",
+   "colour": "Lavender",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-lavender.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-magenta",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Magenta",
+   "colour": "Magenta",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-magenta.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-maroon",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Maroon",
+   "colour": "Maroon",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-maroon.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-mauve",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Mauve",
+   "colour": "Mauve",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-mauve.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-midnight-black",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Midnight Black",
+   "colour": "Midnight Black",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-midnight-black.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-neon-pink",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Neon Pink",
+   "colour": "Neon Pink",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-neon-pink.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-pastel-mix",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Pastel Mix",
+   "colour": "Pastel Mix",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-pastel-mix.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-royal-blue",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Royal Blue",
+   "colour": "Royal Blue",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-royal-blue.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "square-edge-glass-bangles-sunset",
+   "collection": "square-edge-glass-bangles",
+   "collectionName": "Square Edge Glass Bangles",
+   "name": "Sunset",
+   "colour": "Sunset",
+   "price": 499,
+   "pieces": 12,
+   "image": "square-edge-glass-bangles-sunset.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "A crisp squared profile that stacks flat and sits clean against the skin."
+  },
+  {
+   "id": "statement-bangles-enamel-lakshmi",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Enamel Lakshmi",
+   "colour": "Enamel Lakshmi",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-enamel-lakshmi.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-floral-stone",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Floral Stone",
+   "colour": "Floral Stone",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-floral-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-green-floral-stone",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Green Floral Stone",
+   "colour": "Green Floral Stone",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-green-floral-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-lakshmi-pearl",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Lakshmi Pearl",
+   "colour": "Lakshmi Pearl",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-lakshmi-pearl.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-lakshmi-ruby-emerald",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Lakshmi Ruby Emerald",
+   "colour": "Lakshmi Ruby Emerald",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-lakshmi-ruby-emerald.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-non-idol-floral",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Non Idol Floral",
+   "colour": "Non Idol Floral",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-non-idol-floral.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-pearl-floral-square",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Pearl Floral Square",
+   "colour": "Pearl Floral Square",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-pearl-floral-square.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-pink-floral-stone",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Pink Floral Stone",
+   "colour": "Pink Floral Stone",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-pink-floral-stone.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  },
+  {
+   "id": "statement-bangles-red-lotus-lakshmi",
+   "collection": "statement-bangles",
+   "collectionName": "Statement Bangles",
+   "name": "Red Lotus Lakshmi",
+   "colour": "Red Lotus Lakshmi",
+   "price": 499,
+   "pieces": 1,
+   "image": "statement-bangles-red-lotus-lakshmi.jpg",
+   "sizes": [
+    "2.2",
+    "2.4",
+    "2.6",
+    "2.8"
+   ],
+   "blurb": "Single, substantial pieces made to be the whole outfit."
+  }
+ ]
+}

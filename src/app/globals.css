@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------- fonts
+   The @font-face rules are NOT here on purpose. Their url() would have to be
+   an absolute "/fonts/..." path, which ignores basePath and 404s on a GitHub
+   Pages project site (silently dropping both brand faces). They are emitted in
+   layout.tsx instead, where the base path is known and can be prefixed.
+   See <BrandFonts /> there. */
+
+/* --------------------------------------------------------------- tokens
+   Palette taken from ANVEDA's own mark: the gold #c8ae71 is sampled from
+   the logo, the maroon from the brand's existing surfaces. The canvas is a
+   warm ivory rather than white — jewellery photography needs a warm ground,
+   and every reference brand (Missoma, Astrid & Miyu, Cartier) sells on one. */
+@theme {
+  --color-ink: #241a14;
+  --color-ink-soft: #6d6055;
+  --color-ivory: #f7f2ea;
+  --color-ivory-2: #efe6d8;
+  --color-maroon: #2b0505;
+  --color-maroon-2: #401010;
+  --color-gold: #c8ae71;
+  --color-gold-deep: #967c40;
+  --color-line: rgba(36, 26, 20, 0.14);
+
+  --font-display: "Luxenta", Georgia, "Times New Roman", serif;
+  --font-sans: "Salena", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* clip, NOT hidden: overflow-x:hidden on html/body makes them a scroll
+   container, which silently kills position:sticky on the header. clip
+   contains a stray wide element without creating that container. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.06;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-deep);
+  outline-offset: 3px;
+}
+.on-dark :focus-visible { outline-color: var(--color-gold); }
+
+/* Editorial small-caps label used across every section. */
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+}
+.on-dark .eyebrow { color: var(--color-gold); }
+
+/* Reveal-on-scroll. Only applies once JS marks the document, so a visitor
+   without JS never loses content to a hidden animation state. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* Hide scrollbars on the horizontal rails without losing scrollability. */
+.no-bar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-bar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

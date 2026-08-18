@@ -1,0 +1,397 @@
+[
+ {
+  "family": "Acrylic Bangles",
+  "colour": "Acrylic White",
+  "file": "acrylic-bangles-acrylic-white.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Lakshmi Floral Drop",
+  "file": "antique-bangles-lakshmi-floral-drop.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Lakshmi Gold Ruby Emerald",
+  "file": "antique-bangles-lakshmi-gold-ruby-emerald.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Lakshmi Stone",
+  "file": "antique-bangles-lakshmi-stone.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Peacock",
+  "file": "antique-bangles-peacock.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Pearl Floral Square",
+  "file": "antique-bangles-pearl-floral-square.jpg"
+ },
+ {
+  "family": "Antique Bangles",
+  "colour": "Rani Pink Diamond Cut",
+  "file": "antique-bangles-rani-pink-diamond-cut.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Aqua",
+  "file": "intricate-glass-bangles-aqua.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Assorted",
+  "file": "intricate-glass-bangles-assorted.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Champagne Gold",
+  "file": "intricate-glass-bangles-champagne-gold.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Mocha",
+  "file": "intricate-glass-bangles-mocha.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Peach",
+  "file": "intricate-glass-bangles-peach.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Rose Pink",
+  "file": "intricate-glass-bangles-rose-pink.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Royal Blue",
+  "file": "intricate-glass-bangles-royal-blue.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Sky Blue",
+  "file": "intricate-glass-bangles-sky-blue.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Tangerine",
+  "file": "intricate-glass-bangles-tangerine.jpg"
+ },
+ {
+  "family": "Intricate Glass Bangles",
+  "colour": "Velvet Purple",
+  "file": "intricate-glass-bangles-velvet-purple.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Classic Red",
+  "file": "jelly-bangles-classic-red.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Dark Green",
+  "file": "jelly-bangles-dark-green.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Light Green",
+  "file": "jelly-bangles-light-green.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Multicolored",
+  "file": "jelly-bangles-multicolored.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Orange",
+  "file": "jelly-bangles-orange.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Sky Blue",
+  "file": "jelly-bangles-sky-blue.jpg"
+ },
+ {
+  "family": "Jelly Bangles",
+  "colour": "Teal",
+  "file": "jelly-bangles-teal.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "Blue and Yellow",
+  "file": "kashmiri-bangles-blue-and-yellow.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "Golden Stone",
+  "file": "kashmiri-bangles-golden-stone.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "Long Hanging Gunghroo",
+  "file": "kashmiri-bangles-long-hanging-gunghroo.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "Orange and Brown",
+  "file": "kashmiri-bangles-orange-and-brown.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "Red and Yellow",
+  "file": "kashmiri-bangles-red-and-yellow.jpg"
+ },
+ {
+  "family": "Kashmiri Bangles",
+  "colour": "White Stone",
+  "file": "kashmiri-bangles-white-stone.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Apricot",
+  "file": "pastel-palette-apricot.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Assorted",
+  "file": "pastel-palette-assorted.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Champagne",
+  "file": "pastel-palette-champagne.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Parrot Green",
+  "file": "pastel-palette-parrot-green.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Pista",
+  "file": "pastel-palette-pista.jpg"
+ },
+ {
+  "family": "Pastel Palette",
+  "colour": "Sky Blue",
+  "file": "pastel-palette-sky-blue.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Assorted",
+  "file": "petal-stone-bangles-assorted.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Classic Blue",
+  "file": "petal-stone-bangles-classic-blue.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Deep Wine",
+  "file": "petal-stone-bangles-deep-wine.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Emerald Green",
+  "file": "petal-stone-bangles-emerald-green.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Ivory",
+  "file": "petal-stone-bangles-ivory.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Magenta",
+  "file": "petal-stone-bangles-magenta.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Multicolor",
+  "file": "petal-stone-bangles-multicolor.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Mustard Yellow",
+  "file": "petal-stone-bangles-mustard-yellow.jpg"
+ },
+ {
+  "family": "Petal Stone Bangles",
+  "colour": "Parrot Green",
+  "file": "petal-stone-bangles-parrot-green.jpg"
+ },
+ {
+  "family": "Phool Glass Bangles",
+  "colour": "Champagne",
+  "file": "phool-glass-bangles-champagne.jpg"
+ },
+ {
+  "family": "Phool Glass Bangles",
+  "colour": "Magenta",
+  "file": "phool-glass-bangles-magenta.jpg"
+ },
+ {
+  "family": "Phool Glass Bangles",
+  "colour": "Mehendi Green",
+  "file": "phool-glass-bangles-mehendi-green.jpg"
+ },
+ {
+  "family": "Phool Glass Bangles",
+  "colour": "Ruby Red",
+  "file": "phool-glass-bangles-ruby-red.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "Gold Stone Pearl Bangles",
+  "file": "side-bangles-gold-stone-pearl-bangles.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "Premium Non-Bendable Diamond Look-Alike Stone Bangles",
+  "file": "side-bangles-premium-non-bendable-diamond-look-alike-stone-bangles.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "Premium Non-Bendable Gold Stone Bangles",
+  "file": "side-bangles-premium-non-bendable-gold-stone-bangles.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "Round Kundan Bangles",
+  "file": "side-bangles-round-kundan-bangles.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "Statement Stone Bangle",
+  "file": "side-bangles-statement-stone-bangle.jpg"
+ },
+ {
+  "family": "Side Bangles",
+  "colour": "White Stone Pearl Bangles",
+  "file": "side-bangles-white-stone-pearl-bangles.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Aqua",
+  "file": "square-edge-glass-bangles-aqua.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Assorted",
+  "file": "square-edge-glass-bangles-assorted.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Champagne Gold",
+  "file": "square-edge-glass-bangles-champagne-gold.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Classic Red",
+  "file": "square-edge-glass-bangles-classic-red.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Deep Wine",
+  "file": "square-edge-glass-bangles-deep-wine.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Emerald Green",
+  "file": "square-edge-glass-bangles-emerald-green.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Lavender",
+  "file": "square-edge-glass-bangles-lavender.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Magenta",
+  "file": "square-edge-glass-bangles-magenta.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Maroon",
+  "file": "square-edge-glass-bangles-maroon.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Mauve",
+  "file": "square-edge-glass-bangles-mauve.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Midnight Black",
+  "file": "square-edge-glass-bangles-midnight-black.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Neon Pink",
+  "file": "square-edge-glass-bangles-neon-pink.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Pastel Mix",
+  "file": "square-edge-glass-bangles-pastel-mix.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Royal Blue",
+  "file": "square-edge-glass-bangles-royal-blue.jpg"
+ },
+ {
+  "family": "Square Edge Glass Bangles",
+  "colour": "Sunset",
+  "file": "square-edge-glass-bangles-sunset.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Enamel Lakshmi",
+  "file": "statement-bangles-enamel-lakshmi.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Floral Stone",
+  "file": "statement-bangles-floral-stone.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Green Floral Stone",
+  "file": "statement-bangles-green-floral-stone.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Lakshmi Pearl",
+  "file": "statement-bangles-lakshmi-pearl.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Lakshmi Ruby Emerald",
+  "file": "statement-bangles-lakshmi-ruby-emerald.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Non Idol Floral",
+  "file": "statement-bangles-non-idol-floral.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Pearl Floral Square",
+  "file": "statement-bangles-pearl-floral-square.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Pink Floral Stone",
+  "file": "statement-bangles-pink-floral-stone.jpg"
+ },
+ {
+  "family": "Statement Bangles",
+  "colour": "Red Lotus Lakshmi",
+  "file": "statement-bangles-red-lotus-lakshmi.jpg"
+ }
+]
