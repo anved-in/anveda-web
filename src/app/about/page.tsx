@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="on-dark relative flex min-h-[44svh] items-end overflow-hidden bg-maroon md:min-h-[52svh]">
+      <section className="on-dark relative flex min-h-[44svh] items-end overflow-hidden bg-espresso md:min-h-[52svh]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset(imgSrc(products[12]?.image ?? products[0].image))}
@@ -24,12 +24,12 @@ export default function AboutPage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(20,3,3,.6) 0%, rgba(20,3,3,.4) 40%, rgba(20,3,3,.9) 100%)",
+              "linear-gradient(180deg, rgba(24,21,19,.6) 0%, rgba(24,21,19,.4) 40%, rgba(24,21,19,.9) 100%)",
           }}
         />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-12 pt-20 sm:px-6">
           <span className="eyebrow">Est. Karnataka · India</span>
-          <h1 className="mt-3 max-w-[18ch] font-display text-[clamp(34px,5.4vw,66px)] text-[#fbf5e9]">
+          <h1 className="mt-3 max-w-[18ch] font-display text-[clamp(34px,5.4vw,66px)] text-[#f7f2ec]">
             Small batches, chosen by hand.
           </h1>
         </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* What we promise — the trust block, kept concrete rather than florid. */}
-      <section className="bg-ivory-2 px-5 py-14 sm:px-6 md:py-20">
+      <section className="bg-cream-2 px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-[1320px]">
           <span className="eyebrow">What you can count on</span>
           <h2 className="mt-3 font-display text-[clamp(26px,3.4vw,42px)]">
@@ -110,7 +110,7 @@ export default function AboutPage() {
         </h2>
         <Link
           href="/collections"
-          className="mt-7 inline-block bg-maroon px-9 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-maroon-2"
+          className="mt-7 inline-block bg-espresso px-9 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
         >
           Shop the collection
         </Link>

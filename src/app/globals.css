@@ -13,15 +13,41 @@
    warm ivory rather than white — jewellery photography needs a warm ground,
    and every reference brand (Missoma, Astrid & Miyu, Cartier) sells on one. */
 @theme {
-  --color-ink: #241a14;
-  --color-ink-soft: #6d6055;
-  --color-ivory: #f7f2ea;
-  --color-ivory-2: #efe6d8;
-  --color-maroon: #2b0505;
-  --color-maroon-2: #401010;
+  /* Palette calibrated against the reference brands, measured from their live
+     CSS rather than guessed:
+       Missoma        background #faf5ef (warm cream)
+       Astrid & Miyu  background #f6ede6, text #2b2f2e, near-black buttons
+       Cartier        white ground, pure black type
+     The shared principle: a warm neutral ground, near-black type, and almost no
+     chrome — the product photography supplies all the colour. An earlier
+     maroon-and-gold scheme read as festive rather than premium, which is the
+     opposite of what these brands do.
+
+     ANVEDA's gold is kept, but demoted from a surface colour to a fine accent
+     (rules, eyebrows, small marks), which is exactly how Missoma uses it. */
+
+  /* Ink: near-black, never pure #000 — softer on a warm ground. */
+  --color-ink: #22201d;
+  --color-ink-soft: #6f6862;
+  --color-ink-faint: #706c67;   /* 4.8:1 on cream — was 2.8 and failing */
+
+  /* Grounds: cream base, a second warmer tone for alternating bands. */
+  --color-cream: #faf5ef;
+  --color-cream-2: #f4ece2;
+  --color-cream-3: #ece1d4;
+
+  /* Espresso replaces the old maroon for dark bands: a warm near-black that
+     sits with the cream instead of shouting against it. */
+  --color-espresso: #2b2724;
+  --color-espresso-2: #3a3430;
+
+  /* Gold, kept from the ANVEDA mark, as an accent only.
+     --color-gold-deep is the text-safe variant (4.5:1 on cream). */
   --color-gold: #c8ae71;
-  --color-gold-deep: #967c40;
-  --color-line: rgba(36, 26, 20, 0.14);
+  --color-gold-deep: #83682f;   /* 4.86:1 on cream, 4.5:1 on cream-2 */
+
+  --color-line: rgba(34, 32, 29, 0.13);
+  --color-line-strong: rgba(34, 32, 29, 0.26);
 
   --font-display: "Luxenta", Georgia, "Times New Roman", serif;
   --font-sans: "Salena", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -38,7 +64,7 @@ body {
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-ivory);
+  background: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

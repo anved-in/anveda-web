@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       {/* ------------------------------------------------------------ hero */}
-      <section className="on-dark relative -mt-[72px] flex min-h-[88svh] items-end overflow-hidden bg-maroon pt-[72px] md:-mt-[76px] md:pt-[76px]">
+      <section className="on-dark relative -mt-[72px] flex min-h-[88svh] items-end overflow-hidden bg-espresso pt-[72px] md:-mt-[76px] md:pt-[76px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset(imgSrc(hero.image))}
@@ -34,16 +34,16 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(20,3,3,.74) 0%, rgba(20,3,3,.3) 34%, rgba(20,3,3,.88) 100%)",
+              "linear-gradient(180deg, rgba(24,21,19,.74) 0%, rgba(24,21,19,.3) 34%, rgba(24,21,19,.88) 100%)",
           }}
         />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-14 sm:px-6 md:pb-24">
           <span className="eyebrow">Est. Karnataka · India</span>
-          <h1 className="mt-4 max-w-[15ch] font-display text-[clamp(44px,8.2vw,104px)] text-[#fbf5e9]">
+          <h1 className="mt-4 max-w-[15ch] font-display text-[clamp(44px,8.2vw,104px)] text-[#f7f2ec]">
             Bangles that carry{" "}
             <span className="block text-gold">a little tradition.</span>
           </h1>
-          <p className="mt-5 max-w-[46ch] text-[clamp(15px,1.35vw,18px)] leading-relaxed text-[#e3d6c2]">
+          <p className="mt-5 max-w-[46ch] text-[clamp(15px,1.35vw,18px)] leading-relaxed text-[#d8d1c8]">
             Glass, kundan and antique bangles — chosen one batch at a time, for
             the weddings, the festivals and the ordinary Tuesdays that deserve
             them too.
@@ -51,13 +51,13 @@ export default function Home() {
           <div className="mt-9 flex flex-wrap gap-3.5">
             <Link
               href="/collections"
-              className="bg-gold px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-maroon transition-colors hover:bg-[#dcc38c]"
+              className="bg-cream px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-white"
             >
               Shop the collection
             </Link>
             <Link
               href="/about"
-              className="border border-ivory/50 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:border-ivory hover:bg-ivory hover:text-maroon"
+              className="border border-cream/50 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:border-cream hover:bg-cream hover:text-espresso"
             >
               Our story
             </Link>
@@ -129,7 +129,7 @@ export default function Home() {
               >
                 <Link
                   href={`/collections/${c.slug}`}
-                  className="group relative block overflow-hidden bg-maroon-2"
+                  className="group relative block overflow-hidden bg-espresso-2"
                 >
                   <div className={i === 0 ? "aspect-[3/2]" : i <= 2 ? "aspect-[3/4]" : "aspect-[3/2]"}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -145,10 +145,10 @@ export default function Home() {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(180deg, rgba(20,3,3,0) 38%, rgba(20,3,3,.84) 100%)",
+                        "linear-gradient(180deg, rgba(24,21,19,0) 38%, rgba(24,21,19,.84) 100%)",
                     }}
                   />
-                  <div className="absolute inset-x-0 bottom-0 p-5 text-ivory md:p-6">
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-cream md:p-6">
                     <h3 className="font-display text-[clamp(19px,2vw,27px)]">{c.name}</h3>
                     <div className="mt-1 text-[11.5px] uppercase tracking-[0.18em] text-gold">
                       {products.filter((p) => p.collection === c.slug).length} designs
@@ -165,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------------ bestsellers */}
-      <section className="bg-ivory-2 px-5 py-16 sm:px-6 md:py-28">
+      <section className="bg-cream-2 px-5 py-16 sm:px-6 md:py-28">
         <div className="mx-auto max-w-[1320px]">
           <div className="reveal mb-10 flex flex-wrap items-end justify-between gap-5 border-b border-line pb-5">
             <div>
@@ -233,7 +233,7 @@ export default function Home() {
             </div>
             <Link
               href="/about"
-              className="mt-7 inline-block border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+              className="mt-7 inline-block border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
             >
               Read our story
             </Link>
@@ -242,21 +242,21 @@ export default function Home() {
       </section>
 
       {/* -------------------------------------------------------- lookbook */}
-      <section className="on-dark bg-maroon py-16 md:py-24">
+      <section className="on-dark bg-espresso py-16 md:py-24">
         <div className="mx-auto max-w-[1320px] px-5 sm:px-6">
           <div className="reveal mb-9 flex flex-wrap items-end justify-between gap-5 border-b border-gold/25 pb-5">
             <div>
               <span className="eyebrow">Lookbook</span>
-              <h2 className="mt-3 font-display text-[clamp(28px,3.6vw,46px)] text-[#fbf5e9]">
+              <h2 className="mt-3 font-display text-[clamp(28px,3.6vw,46px)] text-[#f7f2ec]">
                 In colour
               </h2>
-              <p className="mt-3 max-w-[52ch] text-[15px] text-[#c9b79c]">
+              <p className="mt-3 max-w-[52ch] text-[15px] text-[#b3aca4]">
                 Swipe through the shades currently on our shelf.
               </p>
             </div>
             <Link
               href="/collections"
-              className="border-b border-current pb-1 text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#c9b79c]"
+              className="border-b border-current pb-1 text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#b3aca4]"
             >
               See the full range
             </Link>
@@ -271,7 +271,7 @@ export default function Home() {
                 href={`/product/${p.id}`}
                 className="group w-[230px] shrink-0 snap-start sm:w-[280px]"
               >
-                <div className="aspect-[4/5] overflow-hidden bg-maroon-2">
+                <div className="aspect-[4/5] overflow-hidden bg-espresso-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={asset(imgSrc(p.image))}
@@ -281,7 +281,7 @@ export default function Home() {
                     decoding="async"
                   />
                 </div>
-                <div className="mt-3 text-[12.5px] text-[#c9b79c]">{p.collectionName}</div>
+                <div className="mt-3 text-[12.5px] text-[#b3aca4]">{p.collectionName}</div>
               </Link>
             ))}
           </div>
@@ -289,20 +289,20 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------------------- CTA */}
-      <section className="on-dark border-t border-gold/20 bg-maroon px-5 py-16 text-center sm:px-6 md:py-24">
+      <section className="on-dark border-t border-gold/20 bg-espresso px-5 py-16 text-center sm:px-6 md:py-24">
         <div className="reveal mx-auto max-w-[1320px]">
           <span className="eyebrow">Ready when you are</span>
-          <h2 className="mt-4 font-display text-[clamp(30px,4.4vw,58px)] text-[#fbf5e9]">
+          <h2 className="mt-4 font-display text-[clamp(30px,4.4vw,58px)] text-[#f7f2ec]">
             Pick your colours.
           </h2>
-          <p className="mx-auto mt-5 max-w-[46ch] text-[15px] text-[#c9b79c]">
+          <p className="mx-auto mt-5 max-w-[46ch] text-[15px] text-[#b3aca4]">
             Browse the full range, choose your shades and sizes, and check out
             securely with UPI, card or netbanking.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3.5">
             <Link
               href="/collections"
-              className="bg-gold px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-maroon transition-colors hover:bg-[#dcc38c]"
+              className="bg-cream px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-white"
             >
               Shop all designs
             </Link>
@@ -310,7 +310,7 @@ export default function Home() {
               href={`https://wa.me/${SITE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-ivory/50 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:border-ivory hover:bg-ivory hover:text-maroon"
+              className="border border-cream/50 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:border-cream hover:bg-cream hover:text-espresso"
             >
               Message us
             </a>

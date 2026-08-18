@@ -115,7 +115,7 @@ export default function CheckoutForm() {
         <p className="text-ink-soft">Your bag is empty.</p>
         <Link
           href="/collections"
-          className="mt-6 inline-block border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+          className="mt-6 inline-block border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
         >
           Start shopping
         </Link>
@@ -140,10 +140,10 @@ export default function CheckoutForm() {
         aria-invalid={!!errs[k]}
         className={[
           "mt-1.5 w-full border bg-white px-3.5 py-3 text-[15px] outline-none transition-colors",
-          errs[k] ? "border-[#a3242f]" : "border-line focus:border-ink",
+          errs[k] ? "border-[#a33a2f]" : "border-line focus:border-ink",
         ].join(" ")}
       />
-      {errs[k] && <span className="mt-1 block text-[12.5px] text-[#a3242f]">{errs[k]}</span>}
+      {errs[k] && <span className="mt-1 block text-[12.5px] text-[#a33a2f]">{errs[k]}</span>}
     </label>
   );
 
@@ -178,11 +178,11 @@ export default function CheckoutForm() {
               aria-invalid={!!errs.address}
               className={[
                 "mt-1.5 w-full border bg-white px-3.5 py-3 text-[15px] outline-none transition-colors",
-                errs.address ? "border-[#a3242f]" : "border-line focus:border-ink",
+                errs.address ? "border-[#a33a2f]" : "border-line focus:border-ink",
               ].join(" ")}
             />
             {errs.address && (
-              <span className="mt-1 block text-[12.5px] text-[#a3242f]">{errs.address}</span>
+              <span className="mt-1 block text-[12.5px] text-[#a33a2f]">{errs.address}</span>
             )}
           </label>
 
@@ -217,7 +217,7 @@ export default function CheckoutForm() {
 
       {/* ------------------------------------------------------ summary */}
       <div className="w-full md:w-[42%]">
-        <div className="bg-ivory-2 p-6">
+        <div className="bg-cream-2 p-6">
           <h2 className="font-display text-[22px]">Order summary</h2>
 
           <div className="mt-5">
@@ -226,7 +226,7 @@ export default function CheckoutForm() {
               if (!p) return null;
               return (
                 <div key={`${l.id}__${l.size}`} className="flex gap-3.5 border-b border-line py-4">
-                  <div className="h-[64px] w-[52px] shrink-0 overflow-hidden bg-ivory">
+                  <div className="h-[64px] w-[52px] shrink-0 overflow-hidden bg-cream">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={asset(imgSrc(p.image))}
@@ -263,7 +263,7 @@ export default function CheckoutForm() {
           </div>
 
           {failure && (
-            <p role="alert" className="mt-4 border border-[#a3242f] bg-[#a3242f]/5 p-3 text-[13px] text-[#a3242f]">
+            <p role="alert" className="mt-4 border border-[#a33a2f] bg-[#a33a2f]/5 p-3 text-[13px] text-[#a33a2f]">
               {failure}
             </p>
           )}
@@ -271,7 +271,7 @@ export default function CheckoutForm() {
           <button
             type="submit"
             disabled={busy}
-            className="mt-5 w-full bg-maroon py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-maroon-2 disabled:opacity-60"
+            className="mt-5 w-full bg-espresso py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2 disabled:opacity-60"
           >
             {busy ? "Opening payment…" : live ? `Pay ${inr(total)}` : `Place order — ${inr(total)}`}
           </button>

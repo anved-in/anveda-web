@@ -60,8 +60,8 @@ export default function ContactPage() {
                     className={[
                       "mt-6 inline-block px-6 py-3.5 text-center text-[11.5px] font-bold uppercase tracking-[0.18em] transition-colors",
                       x.primary
-                        ? "bg-maroon text-ivory hover:bg-maroon-2"
-                        : "border border-ink hover:bg-ink hover:text-ivory",
+                        ? "bg-espresso text-cream hover:bg-espresso-2"
+                        : "border border-ink hover:bg-ink hover:text-cream",
                     ].join(" ")}
                   >
                     {x.cta}

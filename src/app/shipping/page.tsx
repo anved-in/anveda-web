@@ -105,7 +105,7 @@ export default function ShippingPage() {
             ))}
           </div>
 
-          <div className="mt-10 bg-ivory-2 p-7 text-center">
+          <div className="mt-10 bg-cream-2 p-7 text-center">
             <h3 className="font-display text-[22px]">Something not covered here?</h3>
             <p className="mx-auto mt-2 max-w-[46ch] text-[14.5px] text-ink-soft">
               Message us on WhatsApp — a real person reads it.
@@ -114,7 +114,7 @@ export default function ShippingPage() {
               href={waLink("Hi ANVEDA! I have a question about shipping.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-block bg-maroon px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-ivory transition-colors hover:bg-maroon-2"
+              className="mt-5 inline-block bg-espresso px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-espresso-2"
             >
               Ask us
             </a>

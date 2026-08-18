@@ -19,7 +19,7 @@ export default function ProductCard({
   return (
     <article className="reveal group" data-d={delay}>
       <Link href={`/product/${p.id}`} className="block">
-        <div className="relative aspect-square overflow-hidden bg-ivory-2">
+        <div className="relative aspect-square overflow-hidden bg-cream-2">
           {/* Plain <img>: the site builds to a static export, where the Next
               image optimizer is unavailable. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

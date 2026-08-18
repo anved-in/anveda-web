@@ -20,7 +20,7 @@ export default function Header() {
 
   // Only the homepage has a dark full-bleed hero for the header to sit over.
   // Everywhere else the header is solid from the first pixel, or it would be
-  // invisible ivory-on-ivory.
+  // invisible cream-on-cream.
   const overHero = path === "/";
 
   useEffect(() => {
@@ -71,8 +71,8 @@ export default function Header() {
       className={[
         "sticky top-0 z-50 transition-[background-color,color,border-color,box-shadow] duration-300",
         solid
-          ? "bg-ivory/95 text-ink border-b border-line backdrop-blur-md"
-          : "text-ivory border-b border-transparent",
+          ? "bg-cream/95 text-ink border-b border-line backdrop-blur-md"
+          : "text-cream border-b border-transparent",
       ].join(" ")}
     >
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center gap-6 px-5 sm:px-6 md:h-[76px]">
@@ -93,7 +93,7 @@ export default function Header() {
           ))}
           <Link
             href="/collections"
-            className="border border-current px-5 py-2.5 text-[11.5px] font-bold uppercase tracking-[0.18em] transition-colors hover:bg-maroon hover:border-maroon hover:text-ivory"
+            className="border border-current px-5 py-2.5 text-[11.5px] font-bold uppercase tracking-[0.18em] transition-colors hover:bg-espresso hover:border-espresso hover:text-cream"
           >
             Shop
           </Link>
@@ -115,7 +115,7 @@ export default function Header() {
             {ready && count > 0 && (
               <span
                 suppressHydrationWarning
-                className="absolute right-0.5 top-0.5 flex h-[17px] min-w-[17px] items-center justify-center bg-gold px-1 text-[10px] font-bold text-maroon"
+                className="absolute right-0.5 top-0.5 flex h-[17px] min-w-[17px] items-center justify-center bg-ink px-1 text-[10px] font-bold text-cream"
               >
                 {count}
               </span>
@@ -137,7 +137,7 @@ export default function Header() {
       </div>
 
       {menu && (
-        <nav className="border-t border-line bg-ivory px-5 pb-6 pt-2 md:hidden">
+        <nav className="border-t border-line bg-cream px-5 pb-6 pt-2 md:hidden">
           {NAV.map((n) => (
             <Link
               key={n.href}
@@ -149,7 +149,7 @@ export default function Header() {
           ))}
           <Link
             href="/collections"
-            className="mt-5 block bg-maroon px-5 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.18em] text-ivory"
+            className="mt-5 block bg-espresso px-5 py-3.5 text-center text-[12px] font-bold uppercase tracking-[0.18em] text-cream"
           >
             Shop all
           </Link>

@@ -58,7 +58,7 @@ export default function Confirmation() {
         <div className="mt-9 flex flex-wrap justify-center gap-3.5">
           <Link
             href="/collections"
-            className="border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+            className="border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
           >
             Continue shopping
           </Link>
@@ -68,7 +68,7 @@ export default function Confirmation() {
             }`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-maroon px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-maroon-2"
+            className="bg-espresso px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
           >
             Message us
           </a>

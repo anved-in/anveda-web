@@ -61,7 +61,7 @@ export default async function ProductPage({
 
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full md:w-[55%] md:pr-10 lg:w-[58%]">
-              <div className="aspect-square overflow-hidden bg-ivory-2">
+              <div className="aspect-square overflow-hidden bg-cream-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={asset(imgSrc(p.image))}
@@ -118,7 +118,7 @@ export default async function ProductPage({
                 ))}
               </dl>
 
-              <div className="mt-6 bg-ivory-2 p-5">
+              <div className="mt-6 bg-cream-2 p-5">
                 <p className="text-[13.5px] leading-relaxed text-ink-soft">
                   <strong className="font-semibold text-ink">
                     Not sure about your size?
@@ -132,7 +132,7 @@ export default async function ProductPage({
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-block border border-ink px-6 py-2.5 text-[11.5px] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-ink hover:text-ivory"
+                  className="mt-3 inline-block border border-ink px-6 py-2.5 text-[11.5px] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-ink hover:text-cream"
                 >
                   Ask on WhatsApp
                 </a>
@@ -142,7 +142,7 @@ export default async function ProductPage({
         </div>
       </section>
 
-      <section className="border-t border-line bg-ivory-2 px-5 py-14 sm:px-6 md:py-20">
+      <section className="border-t border-line bg-cream-2 px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-[1320px]">
           <h2 className="reveal mb-9 border-b border-line pb-5 font-display text-[clamp(24px,3vw,36px)]">
             You may also like

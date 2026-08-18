@@ -60,7 +60,7 @@ export default function ProductBuy({ p }: { p: Product }) {
                 className={[
                   "min-w-[74px] border px-4 py-3 text-center transition-colors",
                   on
-                    ? "border-ink bg-ink text-ivory"
+                    ? "border-ink bg-ink text-cream"
                     : "border-line hover:border-ink",
                 ].join(" ")}
               >
@@ -69,7 +69,7 @@ export default function ProductBuy({ p }: { p: Product }) {
                   <span
                     className={[
                       "mt-0.5 block text-[10.5px] uppercase tracking-[0.1em]",
-                      on ? "text-ivory/70" : "text-ink-soft",
+                      on ? "text-cream/70" : "text-ink-soft",
                     ].join(" ")}
                   >
                     {g.label}
@@ -81,7 +81,7 @@ export default function ProductBuy({ p }: { p: Product }) {
         </div>
 
         {err && (
-          <p role="alert" className="mt-2.5 text-[13px] text-[#a3242f]">
+          <p role="alert" className="mt-2.5 text-[13px] text-[#a33a2f]">
             Please choose a size first.
           </p>
         )}
@@ -115,7 +115,7 @@ export default function ProductBuy({ p }: { p: Product }) {
       <button
         type="button"
         onClick={onAdd}
-        className="mt-8 w-full bg-maroon py-4.5 text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-maroon-2"
+        className="mt-8 w-full bg-espresso py-4.5 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
         style={{ paddingTop: "18px", paddingBottom: "18px" }}
       >
         {added ? "Added to bag ✓" : `Add to bag — ${inr(p.price * qty)}`}

@@ -67,7 +67,7 @@ export default function SizingPage() {
                   </ol>
                 </div>
 
-                <div className="bg-ivory-2 p-5">
+                <div className="bg-cream-2 p-5">
                   <p className="text-[14px] leading-relaxed text-ink-soft">
                     <strong className="font-semibold text-ink">If you are between sizes,</strong>{" "}
                     go up rather than down. A bangle that is slightly loose still
@@ -135,7 +135,7 @@ export default function SizingPage() {
                   href={waLink("Hi ANVEDA! Could you help me work out my bangle size?")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-block bg-maroon px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-ivory transition-colors hover:bg-maroon-2"
+                  className="mt-4 inline-block bg-espresso px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-espresso-2"
                 >
                   Ask on WhatsApp
                 </a>
@@ -146,7 +146,7 @@ export default function SizingPage() {
           <div className="mt-14 border-t border-line pt-10 text-center">
             <Link
               href="/collections"
-              className="inline-block border border-ink px-9 py-4 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+              className="inline-block border border-ink px-9 py-4 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
             >
               Shop by size
             </Link>

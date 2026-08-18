@@ -29,7 +29,7 @@ export default function CartDrawer() {
       <div
         onClick={() => setOpen(false)}
         className={[
-          "fixed inset-0 z-[70] bg-maroon/45 transition-opacity duration-300",
+          "fixed inset-0 z-[70] bg-espresso/45 transition-opacity duration-300",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         ].join(" ")}
         aria-hidden="true"
@@ -39,7 +39,7 @@ export default function CartDrawer() {
         aria-modal="true"
         aria-label="Your bag"
         className={[
-          "fixed right-0 top-0 z-[80] flex h-[100dvh] w-full max-w-[420px] flex-col bg-ivory shadow-2xl transition-transform duration-300",
+          "fixed right-0 top-0 z-[80] flex h-[100dvh] w-full max-w-[420px] flex-col bg-cream shadow-2xl transition-transform duration-300",
           open ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
       >
@@ -60,7 +60,7 @@ export default function CartDrawer() {
             <Link
               href="/collections"
               onClick={() => setOpen(false)}
-              className="mt-6 border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+              className="mt-6 border border-ink px-7 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
             >
               Start shopping
             </Link>
@@ -76,7 +76,7 @@ export default function CartDrawer() {
                     <Link
                       href={`/product/${p.id}`}
                       onClick={() => setOpen(false)}
-                      className="h-[86px] w-[70px] shrink-0 overflow-hidden bg-ivory-2"
+                      className="h-[86px] w-[70px] shrink-0 overflow-hidden bg-cream-2"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -160,7 +160,7 @@ export default function CartDrawer() {
               <Link
                 href="/checkout"
                 onClick={() => setOpen(false)}
-                className="mt-5 block bg-maroon py-4 text-center text-[12px] font-bold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-maroon-2"
+                className="mt-5 block bg-espresso py-4 text-center text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
               >
                 Checkout
               </Link>

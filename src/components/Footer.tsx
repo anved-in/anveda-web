@@ -5,7 +5,7 @@ import { collections } from "@/lib/catalog";
 
 export default function Footer() {
   return (
-    <footer className="on-dark bg-maroon px-5 pb-8 pt-16 text-[#c9b79c] sm:px-6 md:pt-20">
+    <footer className="on-dark bg-espresso px-5 pb-8 pt-16 text-[#b3aca4] sm:px-6 md:pt-20">
       <div className="mx-auto max-w-[1320px]">
         <div className="flex flex-wrap gap-y-9">
           <div className="w-full pr-8 md:w-[36%]">
@@ -84,7 +84,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-gold/20 pt-6 text-[12.5px]">
           <span>© {new Date().getFullYear()} ANVEDA. All rights reserved.</span>
-          <span className="text-[#8f7f6a]">Made in India</span>
+          <span className="text-[#8a837b]">Made in India</span>
         </div>
       </div>
     </footer>

@@ -33,7 +33,7 @@ export default function CollectionsPage() {
             <Link
               key={c.slug}
               href={`#${c.slug}`}
-              className="shrink-0 border border-line px-4 py-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] transition-colors hover:border-ink hover:bg-ink hover:text-ivory"
+              className="shrink-0 border border-line px-4 py-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] transition-colors hover:border-ink hover:bg-ink hover:text-cream"
             >
               {c.name}
             </Link>
@@ -49,7 +49,7 @@ export default function CollectionsPage() {
             id={c.slug}
             className={[
               "scroll-mt-24 px-5 py-14 sm:px-6 md:py-20",
-              ci % 2 === 1 ? "bg-ivory-2" : "",
+              ci % 2 === 1 ? "bg-cream-2" : "",
             ].join(" ")}
           >
             <div className="mx-auto max-w-[1320px]">
@@ -83,7 +83,7 @@ export default function CollectionsPage() {
                 <div className="mt-9 text-center">
                   <Link
                     href={`/collections/${c.slug}`}
-                    className="inline-block border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+                    className="inline-block border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
                   >
                     All {items.length} {c.name}
                   </Link>

@@ -43,7 +43,7 @@ export default async function CollectionPage({
     <>
       {/* Collection hero: the cover photo carries the mood, the story explains
           why this collection exists at all. */}
-      <section className="on-dark relative flex min-h-[46svh] items-end overflow-hidden bg-maroon md:min-h-[56svh]">
+      <section className="on-dark relative flex min-h-[46svh] items-end overflow-hidden bg-espresso md:min-h-[56svh]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset(imgSrc(c.cover))}
@@ -56,21 +56,21 @@ export default async function CollectionPage({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(20,3,3,.55) 0%, rgba(20,3,3,.35) 40%, rgba(20,3,3,.9) 100%)",
+              "linear-gradient(180deg, rgba(24,21,19,.55) 0%, rgba(24,21,19,.35) 40%, rgba(24,21,19,.9) 100%)",
           }}
         />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-10 pt-16 sm:px-6 md:pb-14">
-          <nav className="mb-4 text-[11.5px] uppercase tracking-[0.16em] text-[#c9b79c]">
+          <nav className="mb-4 text-[11.5px] uppercase tracking-[0.16em] text-[#b3aca4]">
             <Link href="/collections" className="hover:text-gold">
               Collections
             </Link>
             <span className="mx-2">/</span>
             <span className="text-gold">{c.name}</span>
           </nav>
-          <h1 className="max-w-[16ch] font-display text-[clamp(32px,5.4vw,64px)] text-[#fbf5e9]">
+          <h1 className="max-w-[16ch] font-display text-[clamp(32px,5.4vw,64px)] text-[#f7f2ec]">
             {c.name}
           </h1>
-          <p className="mt-4 max-w-[54ch] text-[15px] leading-relaxed text-[#e3d6c2]">
+          <p className="mt-4 max-w-[54ch] text-[15px] leading-relaxed text-[#d8d1c8]">
             {c.story}
           </p>
           <div className="mt-5 text-[11.5px] uppercase tracking-[0.18em] text-gold">
@@ -95,7 +95,7 @@ export default async function CollectionPage({
       </section>
 
       {/* Next collection: keeps browsing going instead of dead-ending. */}
-      <section className="border-t border-line bg-ivory-2 px-5 py-14 sm:px-6 md:py-20">
+      <section className="border-t border-line bg-cream-2 px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-between gap-6">
           <div>
             <span className="eyebrow">Next collection</span>
@@ -108,7 +108,7 @@ export default async function CollectionPage({
           </div>
           <Link
             href={`/collections/${next.slug}`}
-            className="border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-ivory"
+            className="border border-ink px-8 py-3.5 text-[11.5px] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-ink hover:text-cream"
           >
             Explore
           </Link>
