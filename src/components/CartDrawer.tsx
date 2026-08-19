@@ -72,7 +72,7 @@ export default function CartDrawer() {
                 const p = lineProduct(l);
                 if (!p) return null;
                 return (
-                  <div key={`${l.id}__${l.size}`} className="flex gap-4 border-b border-line py-5">
+                  <div key={`${l.id}__${l.size}__${l.colour}`} className="flex gap-4 border-b border-line py-5">
                     <Link
                       href={`/product/${p.id}`}
                       onClick={() => setOpen(false)}
@@ -80,7 +80,9 @@ export default function CartDrawer() {
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={asset(imgSrc(p.image))}
+                        src={asset(imgSrc(
+                          p.variants.find((v) => v.colour === l.colour)?.image ?? p.image,
+                        ))}
                         alt={p.name}
                         className="h-full w-full object-cover"
                         loading="lazy"
@@ -98,7 +100,7 @@ export default function CartDrawer() {
                         {p.name}
                       </Link>
                       <div className="mt-0.5 text-[12px] text-ink-soft">
-                        Size {l.size}
+                        {l.colour && `${l.colour} · `}Size {l.size}
                         {p.pieces > 1 && ` · set of ${p.pieces}`}
                       </div>
 
@@ -106,7 +108,7 @@ export default function CartDrawer() {
                         <div className="flex items-center border border-line">
                           <button
                             type="button"
-                            onClick={() => setQty(l.id, l.size, l.qty - 1)}
+                            onClick={() => setQty(l.id, l.size, l.colour, l.qty - 1)}
                             className="px-2.5 py-1 text-[15px] leading-none"
                             aria-label={`Decrease quantity of ${p.name}`}
                           >
@@ -115,7 +117,7 @@ export default function CartDrawer() {
                           <span className="min-w-[26px] text-center text-[13px]">{l.qty}</span>
                           <button
                             type="button"
-                            onClick={() => setQty(l.id, l.size, l.qty + 1)}
+                            onClick={() => setQty(l.id, l.size, l.colour, l.qty + 1)}
                             className="px-2.5 py-1 text-[15px] leading-none"
                             aria-label={`Increase quantity of ${p.name}`}
                           >
@@ -127,7 +129,7 @@ export default function CartDrawer() {
 
                       <button
                         type="button"
-                        onClick={() => remove(l.id, l.size)}
+                        onClick={() => remove(l.id, l.size, l.colour)}
                         className="mt-2 text-[11px] uppercase tracking-[0.14em] text-ink-soft underline underline-offset-2 hover:text-ink"
                       >
                         Remove

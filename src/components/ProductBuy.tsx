@@ -1,17 +1,32 @@
 "use client";
 
-import Link from "@/components/Link";
 import { useState } from "react";
+import Link from "@/components/Link";
 import { useCart } from "@/lib/cart";
-import { inr, SIZE_GUIDE, type Product } from "@/lib/catalog";
+import { imgSrc, inr, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
+import { asset } from "@/lib/site";
 
 /**
- * The buy box: size, quantity, add to bag. Split out as a client component so
- * the rest of the product page stays server-rendered and static-exportable.
+ * The buy box: colour, size, quantity, add to bag.
+ *
+ * Colour lives here rather than as separate product pages, which is how the
+ * reference brands do it and how people actually shop: pick the design, then
+ * the shade. The selected variant also drives the main photo, lifted into the
+ * parent via `onVariant`.
  */
-export default function ProductBuy({ p }: { p: Product }) {
-  // No size preselected on purpose. A defaulted size is the single most common
-  // cause of a wrong-size delivery — the customer must choose deliberately.
+export default function ProductBuy({
+  p,
+  variant,
+  onVariant,
+}: {
+  p: Product;
+  /** Controlled by ProductView so the photo, the thumbnails and the line that
+      reaches the cart can never disagree about which shade is selected. */
+  variant: Variant;
+  onVariant: (v: Variant) => void;
+}) {
+  // No size preselected on purpose: a defaulted size is the commonest cause of
+  // a wrong-size delivery. The customer must choose deliberately.
   const [size, setSize] = useState<string | null>(null);
   const [qty, setQty] = useState(1);
   const [err, setErr] = useState(false);
@@ -23,7 +38,7 @@ export default function ProductBuy({ p }: { p: Product }) {
       setErr(true);
       return;
     }
-    add(p.id, size, qty);
+    add(p.id, size, qty, variant.colour);
     setAdded(true);
     setOpen(true);
     window.setTimeout(() => setAdded(false), 2200);
@@ -31,10 +46,53 @@ export default function ProductBuy({ p }: { p: Product }) {
 
   return (
     <div>
+      {/* ------------------------------------------------------------ colour */}
+      {p.variants.length > 1 && (
+        <div className="mt-7">
+          <div className="flex items-baseline justify-between">
+            <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
+              Colour
+            </span>
+            <span className="text-[12.5px] text-ink-soft">{variant.colour}</span>
+          </div>
+
+          <div className="mt-3 flex flex-wrap gap-2.5">
+            {p.variants.map((v) => {
+              const on = v.colour === variant.colour;
+              return (
+                <button
+                  key={v.colour}
+                  type="button"
+                  onClick={() => onVariant(v)}
+                  aria-pressed={on}
+                  aria-label={v.colour}
+                  title={v.colour}
+                  className={[
+                    "h-[52px] w-[52px] cursor-pointer overflow-hidden border-2 transition-colors",
+                    on ? "border-ink" : "border-transparent hover:border-line-strong",
+                  ].join(" ")}
+                >
+                  {/* The photo is the truest swatch — a flat hex can never
+                      represent a multi-tone or "assorted" set. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={asset(imgSrc(v.image))}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* -------------------------------------------------------------- size */}
       <div className="mt-7">
         <div className="flex items-baseline justify-between">
           <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
-            Size
+            Size {size && <span className="text-ink-soft">· {size}</span>}
           </span>
           <Link
             href="/sizing"
@@ -58,10 +116,10 @@ export default function ProductBuy({ p }: { p: Product }) {
                 }}
                 aria-pressed={on}
                 className={[
-                  "min-w-[74px] border px-4 py-3 text-center transition-colors",
+                  "min-w-[76px] cursor-pointer border px-4 py-3 text-center transition-colors",
                   on
                     ? "border-ink bg-ink text-cream"
-                    : "border-line hover:border-ink",
+                    : "border-line-strong bg-white hover:border-ink",
                 ].join(" ")}
               >
                 <span className="block text-[15px] font-semibold">{s}</span>
@@ -87,15 +145,16 @@ export default function ProductBuy({ p }: { p: Product }) {
         )}
       </div>
 
+      {/* ---------------------------------------------------------- quantity */}
       <div className="mt-7">
         <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
           Quantity
         </span>
-        <div className="mt-3 inline-flex items-center border border-line">
+        <div className="mt-3 inline-flex items-center border border-line-strong bg-white">
           <button
             type="button"
             onClick={() => setQty((q) => Math.max(1, q - 1))}
-            className="px-4 py-3 text-[17px] leading-none"
+            className="cursor-pointer px-4 py-3 text-[17px] leading-none"
             aria-label="Decrease quantity"
           >
             −
@@ -104,7 +163,7 @@ export default function ProductBuy({ p }: { p: Product }) {
           <button
             type="button"
             onClick={() => setQty((q) => Math.min(99, q + 1))}
-            className="px-4 py-3 text-[17px] leading-none"
+            className="cursor-pointer px-4 py-3 text-[17px] leading-none"
             aria-label="Increase quantity"
           >
             +
@@ -115,8 +174,7 @@ export default function ProductBuy({ p }: { p: Product }) {
       <button
         type="button"
         onClick={onAdd}
-        className="mt-8 w-full bg-espresso py-4.5 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
-        style={{ paddingTop: "18px", paddingBottom: "18px" }}
+        className="mt-8 w-full cursor-pointer bg-ink py-[18px] text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
       >
         {added ? "Added to bag ✓" : `Add to bag — ${inr(p.price * qty)}`}
       </button>

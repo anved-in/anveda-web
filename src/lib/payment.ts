@@ -78,7 +78,8 @@ export const orderText = (
     .map((l) => {
       const p = productById(l.id);
       if (!p) return null;
-      return `• ${p.name} (${p.collectionName}) — size ${l.size} × ${l.qty} = ${inr(
+      const shade = l.colour ? ` — ${l.colour}` : "";
+      return `• ${p.name}${shade} — size ${l.size} × ${l.qty} = ${inr(
         p.price * l.qty,
       )}`;
     })
@@ -162,7 +163,7 @@ export const payWithRazorpay = (
       description: `Order ${ref}`,
       prefill: { name: c.name, email: c.email, contact: c.phone },
       notes: { ref, address: `${c.address}, ${c.city}, ${c.state} ${c.pin}` },
-      theme: { color: "#2b0505" },
+      theme: { color: "#2b2724" },
       handler: (res: RazorpayResponse) => {
         settled = true;
         resolve(res.razorpay_payment_id);

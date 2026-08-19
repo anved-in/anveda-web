@@ -225,11 +225,13 @@ export default function CheckoutForm() {
               const p = lineProduct(l);
               if (!p) return null;
               return (
-                <div key={`${l.id}__${l.size}`} className="flex gap-3.5 border-b border-line py-4">
+                <div key={`${l.id}__${l.size}__${l.colour}`} className="flex gap-3.5 border-b border-line py-4">
                   <div className="h-[64px] w-[52px] shrink-0 overflow-hidden bg-cream">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={asset(imgSrc(p.image))}
+                      src={asset(imgSrc(
+                        p.variants.find((v) => v.colour === l.colour)?.image ?? p.image,
+                      ))}
                       alt={p.name}
                       className="h-full w-full object-cover"
                       loading="lazy"
@@ -238,7 +240,7 @@ export default function CheckoutForm() {
                   <div className="min-w-0 flex-1">
                     <div className="truncate text-[13.5px] font-semibold">{p.name}</div>
                     <div className="text-[12px] text-ink-soft">
-                      Size {l.size} · Qty {l.qty}
+                      {l.colour && `${l.colour} · `}Size {l.size} · Qty {l.qty}
                     </div>
                   </div>
                   <div className="text-[13.5px] font-semibold">{inr(p.price * l.qty)}</div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { collections, products } from "@/lib/catalog";
-import ProductCard from "@/components/ProductCard";
+import { collections, listingsIn, allListings } from "@/lib/catalog";
+import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
   title: "Collections",
@@ -19,7 +19,7 @@ export default function CollectionsPage() {
             Collections
           </h1>
           <p className="mt-4 max-w-[56ch] text-[15px] text-ink-soft">
-            {products.length} designs across {collections.length} collections —
+            {allListings().length} designs across {collections.length} collections —
             from everyday glass to the heavier pieces kept for the big days.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function CollectionsPage() {
       </section>
 
       {collections.map((c, ci) => {
-        const items = products.filter((p) => p.collection === c.slug);
+        const items = listingsIn(c.slug);
         return (
           <section
             key={c.slug}
@@ -74,8 +74,8 @@ export default function CollectionsPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-x-4 gap-y-9 md:grid-cols-4 md:gap-x-6">
-                {items.slice(0, 8).map((p, i) => (
-                  <ProductCard key={p.id} p={p} delay={(i % 4) * 70} />
+                {items.slice(0, 8).map((l, i) => (
+                  <ListingCard key={l.variant.colour} l={l} delay={(i % 4) * 70} />
                 ))}
               </div>
 

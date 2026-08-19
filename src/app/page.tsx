@@ -1,21 +1,25 @@
 import Link from "@/components/Link";
-import { collections, products, imgSrc } from "@/lib/catalog";
+import { collections, products, allListings, imgSrc, type Listing } from "@/lib/catalog";
 import { asset, SITE } from "@/lib/site";
-import ProductCard from "@/components/ProductCard";
+import ListingCard from "@/components/ListingCard";
 
-// One photo per collection makes a varied, non-repeating lookbook rail.
-const lookbook = collections.map((c) => {
-  const p = products.find((x) => x.collection === c.slug && x.image !== c.cover);
-  return p ?? products.find((x) => x.collection === c.slug)!;
+// One colourway per collection makes a varied, non-repeating lookbook rail.
+const lookbook: Listing[] = collections.map((c) => {
+  const p = products.find((x) => x.collection === c.slug)!;
+  const v = p.variants[Math.min(1, p.variants.length - 1)];
+  return { product: p, variant: v, href: `/product/${p.id}/?c=${encodeURIComponent(v.colour)}` };
 });
 
-// Bestsellers: one from each of the first eight collections, so the grid reads
-// as a range rather than eight variations of the same bangle.
-const featured = collections.slice(0, 8).map(
-  (c) => products.find((p) => p.collection === c.slug)!,
-);
+// Signature row: the lead colourway of the first eight collections, so the grid
+// reads as a range rather than eight shades of one design.
+const featured: Listing[] = collections.slice(0, 8).map((c) => {
+  const p = products.find((x) => x.collection === c.slug)!;
+  const v = p.variants[0];
+  return { product: p, variant: v, href: `/product/${p.id}/?c=${encodeURIComponent(v.colour)}` };
+});
 
-const hero = products.find((p) => p.collection === "kashmiri-bangles") ?? products[0];
+const heroP = products.find((p) => p.collection === "kashmiri-bangles") ?? products[0];
+const hero = heroP.variants[0];
 
 export default function Home() {
   return (
@@ -69,7 +73,7 @@ export default function Home() {
       <div className="flex flex-wrap border-b border-line">
         {[
           ["Handpicked", "Every batch chosen by hand"],
-          [`${products.length} Designs`, `Across ${collections.length} collections`],
+          [`${allListings().length} Designs`, `Across ${collections.length} collections`],
           ["All India Delivery", "Carefully padded, safely packed"],
           ["Secure Payments", "UPI, cards and netbanking"],
         ].map(([t, d], i) => (
@@ -186,8 +190,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-9 md:grid-cols-4 md:gap-x-6">
-            {featured.map((p, i) => (
-              <ProductCard key={p.id} p={p} delay={(i % 4) * 70} />
+            {featured.map((l, i) => (
+              <ListingCard key={l.product.id} l={l} delay={(i % 4) * 70} />
             ))}
           </div>
         </div>
@@ -204,7 +208,7 @@ export default function Home() {
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset(imgSrc(products[0].image))}
+                src={asset(imgSrc(products[0].variants[0].image))}
                 alt="ANVEDA bangles"
                 className="relative aspect-[4/5] w-full object-cover"
                 loading="lazy"
@@ -265,23 +269,23 @@ export default function Home() {
         {/* Full-bleed rail so it reads as scrollable past the screen edge. */}
         <div className="no-bar flex snap-x snap-mandatory overflow-x-auto px-5 sm:px-6">
           <div className="mx-auto flex max-w-[1320px] gap-3.5">
-            {lookbook.map((p) => (
+            {lookbook.map((l) => (
               <Link
-                key={p.id}
-                href={`/product/${p.id}`}
+                key={l.product.id}
+                href={l.href}
                 className="group w-[230px] shrink-0 snap-start sm:w-[280px]"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-espresso-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={asset(imgSrc(p.image))}
-                    alt={p.name}
+                    src={asset(imgSrc(l.variant.image))}
+                    alt={l.product.name}
                     className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
-                <div className="mt-3 text-[12.5px] text-[#b3aca4]">{p.collectionName}</div>
+                <div className="mt-3 text-[12.5px] text-[#b3aca4]">{l.product.collectionName}</div>
               </Link>
             ))}
           </div>

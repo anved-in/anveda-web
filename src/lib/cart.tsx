@@ -18,6 +18,8 @@ export interface Line {
   id: string;
   size: string;
   qty: number;
+  /** Chosen colourway. Part of the identity: same design, two colours = two lines. */
+  colour: string;
 }
 
 interface CartCtx {
@@ -26,9 +28,9 @@ interface CartCtx {
   ready: boolean;
   count: number;
   subtotal: number;
-  add: (id: string, size: string, qty?: number) => void;
-  setQty: (id: string, size: string, qty: number) => void;
-  remove: (id: string, size: string) => void;
+  add: (id: string, size: string, qty?: number, colour?: string) => void;
+  setQty: (id: string, size: string, colour: string, qty: number) => void;
+  remove: (id: string, size: string, colour: string) => void;
   clear: () => void;
   open: boolean;
   setOpen: (v: boolean) => void;
@@ -37,7 +39,9 @@ interface CartCtx {
 const Ctx = createContext<CartCtx | null>(null);
 const KEY = "anveda.cart.v1";
 
-const keyOf = (id: string, size: string) => `${id}__${size}`;
+// Colour is part of the line key: the same design in two shades must be two
+// separate lines, or picking a second colour would silently overwrite the first.
+const keyOf = (id: string, size: string, colour: string) => `${id}__${size}__${colour}`;
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [lines, setLines] = useState<Line[]>([]);
@@ -69,6 +73,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 typeof l === "object" &&
                 typeof (l as Line).id === "string" &&
                 typeof (l as Line).size === "string" &&
+                typeof (l as Line).colour === "string" &&
                 Number.isFinite((l as Line).qty) &&
                 !!productById((l as Line).id),
             );
@@ -94,30 +99,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [lines, ready]);
 
-  const add = useCallback((id: string, size: string, qty = 1) => {
+  const add = useCallback((id: string, size: string, qty = 1, colour = "") => {
     setLines((cur) => {
-      const i = cur.findIndex((l) => keyOf(l.id, l.size) === keyOf(id, size));
-      if (i === -1) return [...cur, { id, size, qty }];
+      const i = cur.findIndex(
+        (l) => keyOf(l.id, l.size, l.colour) === keyOf(id, size, colour),
+      );
+      if (i === -1) return [...cur, { id, size, qty, colour }];
       const next = [...cur];
       next[i] = { ...next[i], qty: Math.min(99, next[i].qty + qty) };
       return next;
     });
   }, []);
 
-  const setQty = useCallback((id: string, size: string, qty: number) => {
-    setLines((cur) =>
-      qty <= 0
-        ? cur.filter((l) => keyOf(l.id, l.size) !== keyOf(id, size))
-        : cur.map((l) =>
-            keyOf(l.id, l.size) === keyOf(id, size)
-              ? { ...l, qty: Math.min(99, qty) }
-              : l,
-          ),
-    );
-  }, []);
+  const setQty = useCallback(
+    (id: string, size: string, colour: string, qty: number) => {
+      setLines((cur) =>
+        qty <= 0
+          ? cur.filter((l) => keyOf(l.id, l.size, l.colour) !== keyOf(id, size, colour))
+          : cur.map((l) =>
+              keyOf(l.id, l.size, l.colour) === keyOf(id, size, colour)
+                ? { ...l, qty: Math.min(99, qty) }
+                : l,
+            ),
+      );
+    },
+    [],
+  );
 
-  const remove = useCallback((id: string, size: string) => {
-    setLines((cur) => cur.filter((l) => keyOf(l.id, l.size) !== keyOf(id, size)));
+  const remove = useCallback((id: string, size: string, colour: string) => {
+    setLines((cur) =>
+      cur.filter((l) => keyOf(l.id, l.size, l.colour) !== keyOf(id, size, colour)),
+    );
   }, []);
 
   const clear = useCallback(() => setLines([]), []);

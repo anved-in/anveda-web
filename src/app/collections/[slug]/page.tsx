@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import {
   collections,
   collectionBySlug,
-  productsIn,
+  listingsIn,
   imgSrc,
 } from "@/lib/catalog";
 import { asset } from "@/lib/site";
-import ProductCard from "@/components/ProductCard";
+import ListingCard from "@/components/ListingCard";
 
 // Static export needs the full list of pages up front.
 export function generateStaticParams() {
@@ -35,7 +35,7 @@ export default async function CollectionPage({
   const c = collectionBySlug(slug);
   if (!c) notFound();
 
-  const items = productsIn(slug);
+  const items = listingsIn(slug);
   const idx = collections.findIndex((x) => x.slug === slug);
   const next = collections[(idx + 1) % collections.length];
 
@@ -82,10 +82,10 @@ export default async function CollectionPage({
       <section className="px-5 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-[1320px]">
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
-            {items.map((p, i) => (
-              <ProductCard
-                key={p.id}
-                p={p}
+            {items.map((l, i) => (
+              <ListingCard
+                key={l.variant.colour}
+                l={l}
                 delay={(i % 4) * 70}
                 priority={i < 4}
               />
