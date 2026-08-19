@@ -4,8 +4,10 @@ A Next.js storefront for ANVEDA: handpicked glass, antique and kundan bangles.
 Static-exported, deployed to GitHub Pages, with real Razorpay payments.
 
 Built from the visual language of Missoma, Astrid & Miyu, Swarovski and Cartier,
-on ANVEDA's own brand assets (logo, Luxenta + Salena typefaces, maroon/gold
-palette) and its real product photography.
+on ANVEDA's own brand assets (logo, Luxenta + Salena typefaces) and its real
+product photography. The palette is measured from the reference sites: cream
+#faf5ef (Missoma), near-black type and buttons (Astrid & Miyu), with ANVEDA's
+gold kept as a fine accent only.
 
 ---
 
@@ -26,21 +28,25 @@ npm run build        # static export -> ./out
 | `/` | Home — hero, collections, signature designs, story, lookbook |
 | `/collections` | All 11 collections, each with its designs |
 | `/collections/[slug]` | One collection, its full range |
-| `/product/[id]` | Product detail — size, quantity, add to bag |
+| `/product/[id]` | Product detail — colour, size, quantity, add to bag |
 | `/checkout` | Shipping details + payment |
 | `/order-confirmed` | Confirmation with order reference |
 | `/about` `/sizing` `/shipping` `/contact` | Content pages |
 
-79 products across 11 collections, all statically generated (101 pages).
+11 products across 11 collections, carrying 79 colourways between them,
+all statically generated. Colour is a variant on the product page (swatches +
+thumbnails), not a separate page — collection grids link in with `?c=<colour>`
+so browsing by shade still works.
 
 Product data lives in [`src/data/catalog.json`](src/data/catalog.json), generated
 from ANVEDA's real inventory and product photographs. Prices (₹350 / ₹499), sizes
-(2.2–2.8) and set counts come from the live ANVEDA database.
+(2.2–2.8) and set counts come from the live ANVEDA database. It is a frozen
+snapshot, not synced — re-generate it if the inventory changes.
 
 ### To change products
 
-Edit `src/data/catalog.json` and rebuild. Each product needs an `image` that
-exists in `public/img/products/`.
+Edit `src/data/catalog.json` and rebuild. Each product carries a `variants`
+array; every variant needs an `image` that exists in `public/img/products/`.
 
 ---
 
@@ -110,7 +116,7 @@ Already configured in [`.github/workflows/deploy.yml`](.github/workflows/deploy.
 2. Settings → Pages → **Source: GitHub Actions**.
 3. Push to `main`. The workflow builds and deploys.
 
-The site will be at `https://<user>.github.io/<repo>/`.
+The site will be at `https://anved-in.github.io/anveda-web/`.
 
 The workflow sets `NEXT_PUBLIC_BASE_PATH` to `/<repo>` automatically, which is
 what makes assets resolve under that subpath.
@@ -150,3 +156,8 @@ A few things here look unusual and are deliberate:
   viewport, which strands content invisible forever.
 - **No size is preselected** on the product page. A defaulted size is the most
   common cause of a wrong-size delivery.
+- **`ProductView` owns the selected colour**, and `ProductBuy` is controlled.
+  When both held their own copy, clicking a thumbnail moved the photo but not
+  the value add-to-cart used — so the wrong shade got ordered.
+- **Colour is part of the cart line key** (`id__size__colour`), so the same
+  design in two shades is two lines instead of one overwriting the other.
