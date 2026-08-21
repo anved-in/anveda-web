@@ -152,21 +152,24 @@ export const variantPrice = (p: Product, v: Variant): number =>
 export const colourLabel = (p: Product, v: Variant): string => {
   let c = v.colour
     // "... Set of 4" / "... Pair of 2" — pack size is never shown.
-    .replace(/\s*[-–—]?\s*(set|pair|pack)\s+of\s+\d+/gi, "")
+    .replace(/\s*[-–—]?\s*\b(set|pair|pack)\s+of\s+\d+\b/gi, "")
     // A trailing repeat of the family's own noun ("Kundan Border Bangles").
-    .replace(/\s*(glass\s+)?bangles?\s*$/i, "")
+    .replace(/\s*\b(glass\s+)?bangles?\b\s*$/i, "")
     .replace(/\s{2,}/g, " ")
     .trim();
 
-  // Drop any family words the shade repeats, so "Square Edge Glass Bangles" +
-  // "Square Edge Aqua" reads as "Aqua" rather than repeating the family.
-  const famWords = p.name
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, " ")
-    .split(/\s+/)
-    .filter(Boolean);
-  const lead = new RegExp(`^(?:${famWords.join("|")})\s+`, "i");
-  while (lead.test(c) && c.split(/\s+/).length > 1) c = c.replace(lead, "");
+  // Drop any leading family words the shade repeats, so "Square Edge Glass
+  // Bangles" + "Square Edge Aqua" reads as "Aqua" rather than repeating it.
+  //
+  // Done by comparing word lists rather than by building a RegExp from the
+  // family name: the name is data, and interpolating data into a pattern both
+  // needs escaping and lets a stray character in the catalogue break the rule.
+  const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const fam = new Set(p.name.split(/\s+/).map(norm).filter(Boolean));
+  const parts = c.split(/\s+/).filter(Boolean);
+  let start = 0;
+  while (start < parts.length - 1 && fam.has(norm(parts[start]))) start += 1;
+  c = parts.slice(start).join(" ");
 
   return c || v.colour;
 };
