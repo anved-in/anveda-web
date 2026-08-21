@@ -88,6 +88,7 @@ export default async function CollectionPage({
                 l={l}
                 delay={(i % 4) * 70}
                 priority={i < 4}
+                withFamily={false}
               />
             ))}
           </div>

@@ -87,11 +87,6 @@ export default function ProductView({ p }: { p: Product }) {
         <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
           <Price price={variantPrice(p, variant)} size="lg" />
           <span className="badge-sale">20% off</span>
-          {(variant.pieces ?? p.pieces) > 1 && (
-            <span className="w-full text-[13.5px] text-ink-soft">
-              for a {p.unit === "dozen" ? "dozen" : `set of ${variant.pieces ?? p.pieces}`}
-            </span>
-          )}
         </div>
 
         <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">{p.story}</p>
@@ -101,12 +96,6 @@ export default function ProductView({ p }: { p: Product }) {
         <dl className="mt-9 border-t border-line">
           {[
             ["Colour", variant.colour],
-            [
-              "In the set",
-              (variant.pieces ?? p.pieces) > 1
-                ? `${variant.pieces ?? p.pieces} bangles`
-                : "1 bangle",
-            ],
             ["Sizes", (variant.sizes.length ? variant.sizes : p.sizes).join(" · ")],
             ["Delivery", `All India · free above ${inr(SITE.freeShippingAbove)}`],
           ].map(([k, v]) => (

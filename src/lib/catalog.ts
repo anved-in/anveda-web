@@ -140,3 +140,55 @@ export const unitPrice = (id: string, colour: string): number => {
 /** The price for a chosen variant of a product, with the same fallback. */
 export const variantPrice = (p: Product, v: Variant): number =>
   v.price ?? p.price;
+
+/**
+ * A colourway's name, cleaned for display.
+ *
+ * The catalogue stores pack size inside some shade names ("Bell Pearl Flower
+ * Set of 4", "Kundan Border Bangles"). We never show pack size anywhere on the
+ * storefront, and repeating the family name inside the shade produces tiles
+ * like "Border Bangles — Kundan Border Bangles", so both are stripped here.
+ */
+export const colourLabel = (p: Product, v: Variant): string => {
+  let c = v.colour
+    // "... Set of 4" / "... Pair of 2" — pack size is never shown.
+    .replace(/\s*[-–—]?\s*(set|pair|pack)\s+of\s+\d+/gi, "")
+    // A trailing repeat of the family's own noun ("Kundan Border Bangles").
+    .replace(/\s*(glass\s+)?bangles?\s*$/i, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+
+  // Drop any family words the shade repeats, so "Square Edge Glass Bangles" +
+  // "Square Edge Aqua" reads as "Aqua" rather than repeating the family.
+  const famWords = p.name
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+  const lead = new RegExp(`^(?:${famWords.join("|")})\s+`, "i");
+  while (lead.test(c) && c.split(/\s+/).length > 1) c = c.replace(lead, "");
+
+  return c || v.colour;
+};
+
+/**
+ * The title shown on a grid tile: the family name, plus the shade when the
+ * family has more than one. Kept short — the reference storefront's tiles are
+ * a single readable line, not a full product description.
+ */
+export const listingTitle = (
+  p: Product,
+  v: Variant,
+  /** false inside a collection grid, where the heading already names the
+      family and repeating it on every tile is pure noise. */
+  withFamily = true,
+): string => {
+  if (p.variants.length < 2) return p.name;
+  const c = colourLabel(p, v);
+  if (!withFamily) return c;
+  // If the cleaned shade name still contains the family's distinguishing
+  // words, it already describes the product on its own.
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (norm(c).includes(norm(p.name)) || norm(c) === norm(p.name)) return c;
+  return `${p.name} — ${c}`;
+};

@@ -101,7 +101,6 @@ export default function CartDrawer() {
                       </Link>
                       <div className="mt-0.5 text-[12px] text-ink-soft">
                         {l.colour && `${l.colour} · `}Size {l.size}
-                        {p.pieces > 1 && ` · set of ${p.pieces}`}
                       </div>
 
                       <div className="mt-2.5 flex items-center justify-between">
