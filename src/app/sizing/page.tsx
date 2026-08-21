@@ -36,7 +36,7 @@ export default function SizingPage() {
 
               <div className="mt-6 space-y-7">
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-maroon">
                     Easiest — use a bangle you own
                   </div>
                   <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
@@ -48,7 +48,7 @@ export default function SizingPage() {
                 </div>
 
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-maroon">
                     No bangle handy — measure your hand
                   </div>
                   <ol className="mt-2 list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-ink-soft">
@@ -102,7 +102,7 @@ export default function SizingPage() {
                       const cm = parseFloat(s.cm);
                       return (
                         <tr key={s.size} className="border-b border-line">
-                          <td className="py-4 pr-4 font-display text-[24px] text-gold-deep">
+                          <td className="py-4 pr-4 font-display text-[24px] text-maroon">
                             {s.size}
                           </td>
                           <td className="py-4 pr-4 text-[14px] font-medium">{s.label}</td>

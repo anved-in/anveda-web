@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCart, lineProduct } from "@/lib/cart";
-import { imgSrc, inr } from "@/lib/catalog";
+import { imgSrc, inr, unitPrice } from "@/lib/catalog";
 import { asset, SITE, waLink } from "@/lib/site";
 import {
   type Customer,
@@ -243,7 +243,7 @@ export default function CheckoutForm() {
                       {l.colour && `${l.colour} · `}Size {l.size} · Qty {l.qty}
                     </div>
                   </div>
-                  <div className="text-[13.5px] font-semibold">{inr(p.price * l.qty)}</div>
+                  <div className="text-[13.5px] font-semibold">{inr(unitPrice(l.id, l.colour) * l.qty)}</div>
                 </div>
               );
             })}

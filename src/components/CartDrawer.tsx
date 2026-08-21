@@ -3,7 +3,7 @@
 import Link from "@/components/Link";
 import { useEffect } from "react";
 import { useCart, lineProduct } from "@/lib/cart";
-import { imgSrc, inr } from "@/lib/catalog";
+import { imgSrc, inr, unitPrice } from "@/lib/catalog";
 import { SITE, asset } from "@/lib/site";
 
 export default function CartDrawer() {
@@ -89,7 +89,7 @@ export default function CartDrawer() {
                       />
                     </Link>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[10px] uppercase tracking-[0.16em] text-gold-deep">
+                      <div className="text-[10px] uppercase tracking-[0.16em] text-maroon">
                         {p.collectionName}
                       </div>
                       <Link
@@ -124,7 +124,7 @@ export default function CartDrawer() {
                             +
                           </button>
                         </div>
-                        <span className="text-[14px] font-semibold">{inr(p.price * l.qty)}</span>
+                        <span className="text-[14px] font-semibold">{inr(unitPrice(l.id, l.colour) * l.qty)}</span>
                       </div>
 
                       <button
@@ -150,7 +150,7 @@ export default function CartDrawer() {
                 <span className="font-semibold">{shipping === 0 ? "Free" : inr(shipping)}</span>
               </div>
               {shipping > 0 && (
-                <p className="mt-2 text-[12px] text-gold-deep">
+                <p className="mt-2 text-[12px] text-maroon">
                   Add {inr(SITE.freeShippingAbove - subtotal)} more for free shipping.
                 </p>
               )}

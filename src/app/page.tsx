@@ -18,19 +18,20 @@ const featured: Listing[] = collections.slice(0, 8).map((c) => {
   return { product: p, variant: v, href: `/product/${p.id}/?c=${encodeURIComponent(v.colour)}` };
 });
 
-const heroP = products.find((p) => p.collection === "kashmiri-bangles") ?? products[0];
+// Statement Bangles is the widest, most worked family — the right lead image.
+const heroP = products.find((p) => p.collection === "statement-bangles") ?? products[0];
 const hero = heroP.variants[0];
 
 export default function Home() {
   return (
     <>
       {/* ------------------------------------------------------------ hero */}
-      <section className="on-dark relative -mt-[72px] flex min-h-[88svh] items-end overflow-hidden bg-espresso pt-[72px] md:-mt-[76px] md:pt-[76px]">
+      <section className="on-dark relative flex min-h-[76svh] items-end overflow-hidden bg-espresso md:min-h-[80svh]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset(imgSrc(hero.image))}
           alt=""
-          className="absolute inset-0 h-full w-full scale-105 object-cover opacity-50"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.72]"
           fetchPriority="high"
           decoding="async"
         />
@@ -38,7 +39,7 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(24,21,19,.74) 0%, rgba(24,21,19,.3) 34%, rgba(24,21,19,.88) 100%)",
+              "linear-gradient(180deg, rgba(18,18,18,.30) 0%, rgba(18,18,18,.18) 30%, rgba(18,18,18,.86) 100%)",
           }}
         />
         <div className="relative mx-auto w-full max-w-[1320px] px-5 pb-14 sm:px-6 md:pb-24">
@@ -52,7 +53,10 @@ export default function Home() {
             the weddings, the festivals and the ordinary Tuesdays that deserve
             them too.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3.5">
+          <p className="mt-6 inline-block border border-gold/60 px-4 py-2 text-[12px] font-bold uppercase tracking-[0.18em] text-gold">
+            Flat 20% off — every design
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3.5">
             <Link
               href="/collections"
               className="bg-cream px-8 py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-white"

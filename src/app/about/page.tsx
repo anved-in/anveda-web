@@ -69,7 +69,7 @@ export default function AboutPage() {
               “A bangle is never really about the bangle. It is about the sound
               it makes when someone you love walks into the room.”
             </p>
-            <cite className="mt-4 block text-[11.5px] not-italic uppercase tracking-[0.24em] text-gold-deep">
+            <cite className="mt-4 block text-[11.5px] not-italic uppercase tracking-[0.24em] text-maroon">
               The ANVEDA promise
             </cite>
           </blockquote>

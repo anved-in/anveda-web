@@ -1,5 +1,5 @@
 import type { Line } from "./cart";
-import { productById, inr } from "./catalog";
+import { productById, inr, unitPrice } from "./catalog";
 import { SITE } from "./site";
 
 /**
@@ -80,7 +80,7 @@ export const orderText = (
       if (!p) return null;
       const shade = l.colour ? ` — ${l.colour}` : "";
       return `• ${p.name}${shade} — size ${l.size} × ${l.qty} = ${inr(
-        p.price * l.qty,
+        unitPrice(l.id, l.colour) * l.qty,
       )}`;
     })
     .filter(Boolean)

@@ -15,6 +15,15 @@ export interface Variant {
   image: string;
   /** null when the shade has no single representative colour ("Assorted"). */
   hex: string | null;
+  /** Colourways are priced individually — a family can span ₹180 to ₹899. */
+  price: number | null;
+  /** Bangles per set/dozen/pair for this colourway. */
+  pieces: number | null;
+  /** Sizes this colourway is actually stocked in. */
+  sizes: string[];
+  inStock: boolean;
+  /** Admin-set crop focus, as a CSS object-position value. */
+  focal: string | null;
 }
 
 export interface Product {
@@ -22,8 +31,13 @@ export interface Product {
   collection: string;
   collectionName: string;
   name: string;
+  /** Lowest colourway price — what "from ₹x" shows. */
   price: number;
+  /** Highest colourway price; equals `price` when the family is flat-priced. */
+  priceMax: number;
   pieces: number;
+  /** How the pieces are counted: "dozen", "set" or "pair". */
+  unit: string;
   sizes: string[];
   blurb: string;
   story: string;
@@ -103,3 +117,26 @@ export const SIZE_GUIDE: { size: string; label: string; cm: string }[] = [
   { size: "2.6", label: "Regular", cm: "6.5 cm" },
   { size: "2.8", label: "Medium", cm: "7.0 cm" },
 ];
+
+/** True when a family's colourways are not all the same price. */
+export const hasPriceRange = (p: Product): boolean => p.priceMax > p.price;
+
+/** The price to show for a listing — the colourway's own, or the family's. */
+export const listingPrice = (l: Listing): number =>
+  l.variant.price ?? l.product.price;
+
+/**
+ * The price of one unit of a cart line. Colourways are priced individually,
+ * so the line's colour decides the price; the family's lowest price is the
+ * fallback for a line saved before per-colour pricing existed.
+ */
+export const unitPrice = (id: string, colour: string): number => {
+  const p = productById(id);
+  if (!p) return 0;
+  const v = p.variants.find((x) => x.colour === colour);
+  return v?.price ?? p.price;
+};
+
+/** The price for a chosen variant of a product, with the same fallback. */
+export const variantPrice = (p: Product, v: Variant): number =>
+  v.price ?? p.price;

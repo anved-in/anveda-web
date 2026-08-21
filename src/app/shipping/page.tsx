@@ -73,7 +73,7 @@ export default function ShippingPage() {
                   i < 2 ? "border-b md:border-b-0" : "",
                 ].join(" ")}
               >
-                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-deep">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-maroon">
                   {t}
                 </div>
                 <div className="mt-2 text-[15px] font-medium">{d}</div>
@@ -94,7 +94,7 @@ export default function ShippingPage() {
               <details key={f.q} className="group border-b border-line">
                 <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-[15.5px] font-semibold [&::-webkit-details-marker]:hidden">
                   {f.q}
-                  <span className="ml-4 shrink-0 text-[20px] font-normal text-gold-deep transition-transform duration-200 group-open:rotate-45">
+                  <span className="ml-4 shrink-0 text-[20px] font-normal text-maroon transition-transform duration-200 group-open:rotate-45">
                     +
                   </span>
                 </summary>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "@/components/Link";
 import { useCart } from "@/lib/cart";
-import { imgSrc, inr, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
+import { imgSrc, inr, variantPrice, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
 import { asset } from "@/lib/site";
 
 /**
@@ -96,14 +96,14 @@ export default function ProductBuy({
           </span>
           <Link
             href="/sizing"
-            className="text-[12px] text-gold-deep underline underline-offset-2"
+            className="text-[12px] text-maroon underline underline-offset-2"
           >
             Size guide
           </Link>
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2.5">
-          {p.sizes.map((s) => {
+          {(variant.sizes.length ? variant.sizes : p.sizes).map((s) => {
             const g = SIZE_GUIDE.find((x) => x.size === s);
             const on = size === s;
             return (
@@ -176,7 +176,7 @@ export default function ProductBuy({
         onClick={onAdd}
         className="mt-8 w-full cursor-pointer bg-ink py-[18px] text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2"
       >
-        {added ? "Added to bag ✓" : `Add to bag — ${inr(p.price * qty)}`}
+        {added ? "Added to bag ✓" : `Add to bag — ${inr(variantPrice(p, variant) * qty)}`}
       </button>
 
       <p className="mt-3.5 text-center text-[12.5px] text-ink-soft">

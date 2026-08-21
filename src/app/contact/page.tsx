@@ -74,7 +74,7 @@ export default function ContactPage() {
           <div className="mt-12 border-t border-line pt-10">
             <div className="flex flex-wrap gap-y-6">
               <div className="w-full sm:w-1/2 lg:w-1/3">
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-maroon">
                   Where we are
                 </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <div className="w-full sm:w-1/2 lg:w-1/3">
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-deep">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-maroon">
                   When we reply
                 </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">

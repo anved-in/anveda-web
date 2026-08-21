@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { productById, type Product } from "./catalog";
+import { productById, unitPrice, type Product } from "./catalog";
 
 /**
  * A line is a product AT a size — the same design in two sizes is two lines,
@@ -138,10 +138,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const subtotal = useMemo(
     () =>
-      lines.reduce((n, l) => {
-        const p = productById(l.id);
-        return n + (p ? p.price * l.qty : 0);
-      }, 0),
+      lines.reduce((n, l) => n + unitPrice(l.id, l.colour) * l.qty, 0),
     [lines],
   );
 

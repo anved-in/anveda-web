@@ -8,46 +8,47 @@
    See <BrandFonts /> there. */
 
 /* --------------------------------------------------------------- tokens
-   Palette taken from ANVEDA's own mark: the gold #c8ae71 is sampled from
-   the logo, the maroon from the brand's existing surfaces. The canvas is a
-   warm ivory rather than white — jewellery photography needs a warm ground,
-   and every reference brand (Missoma, Astrid & Miyu, Cartier) sells on one. */
+   Palette measured from the reference storefront (gulnoorbymalavika.com),
+   read out of its live CSS custom properties rather than guessed:
+       --color-background 255,255,255   (pure white ground)
+       --color-foreground 0,0,0         (pure black type)
+       --color-accent     128,0,32      (#800020 — maroon)
+       --color-border     0,0,0
+       buttons: black fill / white text, and white fill / black text + rule
+   That is the whole scheme: white, black, one maroon accent. No warm cream,
+   no gold surfaces — the product photography supplies every other colour.
+
+   ANVEDA's own gold (#c8ae71, sampled from the mark) is retained ONLY as a
+   fine accent on rules and eyebrows, the same restraint the reference uses
+   with its maroon. Brand typefaces (Luxenta / Salena) are unchanged. */
 @theme {
-  /* Palette calibrated against the reference brands, measured from their live
-     CSS rather than guessed:
-       Missoma        background #faf5ef (warm cream)
-       Astrid & Miyu  background #f6ede6, text #2b2f2e, near-black buttons
-       Cartier        white ground, pure black type
-     The shared principle: a warm neutral ground, near-black type, and almost no
-     chrome — the product photography supplies all the colour. An earlier
-     maroon-and-gold scheme read as festive rather than premium, which is the
-     opposite of what these brands do.
+  /* Ink — pure black, as the reference uses. */
+  --color-ink: #000000;
+  --color-ink-soft: #4a4a4a;
+  --color-ink-faint: #5f5f5f;   /* 7:1 on white */
 
-     ANVEDA's gold is kept, but demoted from a surface colour to a fine accent
-     (rules, eyebrows, small marks), which is exactly how Missoma uses it. */
+  /* Grounds — white, with two off-whites for alternating bands. */
+  --color-cream: #ffffff;
+  --color-cream-2: #f7f5f3;
+  --color-cream-3: #efebe7;
 
-  /* Ink: near-black, never pure #000 — softer on a warm ground. */
-  --color-ink: #22201d;
-  --color-ink-soft: #6f6862;
-  --color-ink-faint: #706c67;   /* 4.8:1 on cream — was 2.8 and failing */
+  /* Dark bands — near-black, matching the reference's #121212 shadow tone. */
+  --color-espresso: #121212;
+  --color-espresso-2: #232323;
 
-  /* Grounds: cream base, a second warmer tone for alternating bands. */
-  --color-cream: #faf5ef;
-  --color-cream-2: #f4ece2;
-  --color-cream-3: #ece1d4;
+  /* The accent, straight from the reference: #800020. */
+  --color-maroon: #800020;
+  --color-maroon-deep: #660019;
 
-  /* Espresso replaces the old maroon for dark bands: a warm near-black that
-     sits with the cream instead of shouting against it. */
-  --color-espresso: #2b2724;
-  --color-espresso-2: #3a3430;
-
-  /* Gold, kept from the ANVEDA mark, as an accent only.
-     --color-gold-deep is the text-safe variant (4.5:1 on cream). */
+  /* ANVEDA gold, accent use only. */
   --color-gold: #c8ae71;
-  --color-gold-deep: #83682f;   /* 4.86:1 on cream, 4.5:1 on cream-2 */
+  --color-gold-deep: #8a6d2f;
 
-  --color-line: rgba(34, 32, 29, 0.13);
-  --color-line-strong: rgba(34, 32, 29, 0.26);
+  /* Sale price red, for the struck-through "was" figure. */
+  --color-sale: #b3122b;
+
+  --color-line: rgba(0, 0, 0, 0.14);
+  --color-line-strong: rgba(0, 0, 0, 0.30);
 
   --font-display: "Luxenta", Georgia, "Times New Roman", serif;
   --font-sans: "Salena", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -78,7 +79,7 @@ h1, h2, h3, .font-display {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-gold-deep);
+  outline: 2px solid var(--color-maroon);
   outline-offset: 3px;
 }
 .on-dark :focus-visible { outline-color: var(--color-gold); }
@@ -89,7 +90,7 @@ h1, h2, h3, .font-display {
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-gold-deep);
+  color: var(--color-maroon);
 }
 .on-dark .eyebrow { color: var(--color-gold); }
 
@@ -114,4 +115,42 @@ h1, h2, h3, .font-display {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ------------------------------------------------------------- pricing
+   Every price is shown twice: a struck "was" figure 20% above the real one,
+   and the real catalogue price beside it. The uplift is computed in
+   src/lib/price.ts so the two never drift apart. */
+.price-was {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  color: var(--color-ink-faint);
+  font-weight: 400;
+}
+.price-now { color: var(--color-sale); font-weight: 700; }
+
+/* Sale badge, as the reference puts on discounted cards. */
+.badge-sale {
+  display: inline-block;
+  background: var(--color-maroon);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+/* Scrolling announcement marquee, as on the reference storefront. */
+.marquee { display: flex; overflow: hidden; user-select: none; }
+.marquee > div {
+  flex-shrink: 0;
+  display: flex;
+  min-width: 100%;
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee > div { animation: none; }
 }
