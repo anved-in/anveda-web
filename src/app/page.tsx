@@ -67,7 +67,7 @@ export default function Home() {
               <Link
                 key={c.slug}
                 href={`/collections/${c.slug}`}
-                className="reveal group w-[46%] shrink-0 snap-start md:w-auto"
+                className="group w-[46%] shrink-0 snap-start md:w-auto"
               >
                 <div className="aspect-square overflow-hidden bg-cream-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

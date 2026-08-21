@@ -67,8 +67,14 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             src={s.image}
             alt=""
             className="h-full w-full object-cover"
-            fetchPriority={k === 0 ? "high" : undefined}
-            loading={k === 0 ? "eager" : "lazy"}
+            fetchPriority={k === 0 ? "high" : "low"}
+            /* Every slide loads eagerly, including the ones behind. A hero
+               slide is only ever an opacity flip away from being on screen, and
+               a lazy image inside an opacity:0 layer does not begin fetching
+               until it is shown — so the slide changed and the visitor watched
+               a grey box fill in. There are three slides; fetching all three up
+               front costs far less than a visibly empty hero. */
+            loading="eager"
             decoding="async"
           />
           {/* A gradient only along the bottom, so the photograph stays bright
