@@ -67,7 +67,6 @@ Locally, put it in `.env.local`:
 
 ```
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxx
-NEXT_PUBLIC_WHATSAPP=917996009966
 ```
 
 The Key ID is *designed to be public* — it identifies the account, it does not
@@ -126,7 +125,6 @@ what makes assets resolve under that subpath.
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_RAZORPAY_KEY_ID` | Turns on live payments |
-| `NEXT_PUBLIC_WHATSAPP` | Order/enquiry number, digits with country code |
 | `NEXT_PUBLIC_BASE_PATH` | Override the path prefix (set empty for a custom domain) |
 
 ### Moving to a custom domain

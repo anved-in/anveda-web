@@ -39,7 +39,6 @@ jobs:
           # it does not authorise charges). Set it as a repository VARIABLE, not
           # a secret — secrets are unavailable to static client bundles anyway.
           NEXT_PUBLIC_RAZORPAY_KEY_ID: ${{ vars.NEXT_PUBLIC_RAZORPAY_KEY_ID }}
-          NEXT_PUBLIC_WHATSAPP: ${{ vars.NEXT_PUBLIC_WHATSAPP }}
         run: npm run build
 
       - name: Add .nojekyll

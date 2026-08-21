@@ -11,8 +11,17 @@ export const SITE = {
   tagline: "Handpicked Glass Bangles",
   description:
     "Handpicked glass, antique and kundan bangles. Chosen in small batches, packed with care, delivered across India.",
-  /** The owner's WhatsApp number, digits only, with country code. */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "917996009966",
+  /**
+   * The owner's WhatsApp number, digits only, with country code.
+   *
+   * Deliberately NOT read from an environment variable. It used to be, and a
+   * stale NEXT_PUBLIC_WHATSAPP repository variable then silently overrode the
+   * source at build time — the number was correct in the code and in a local
+   * build, and wrong on the live site, which is the worst way to get this
+   * wrong. There is one number, it belongs in version control, and changing
+   * it should be a commit like any other.
+   */
+  whatsapp: "917996009966",
   email: "anveda.in@gmail.com",
   instagram: "https://www.instagram.com/anveda.in/",
 
