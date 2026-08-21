@@ -3,7 +3,7 @@
 import Link from "@/components/Link";
 import { useEffect } from "react";
 import { useCart, lineProduct } from "@/lib/cart";
-import { imgSrc, inr, unitPrice } from "@/lib/catalog";
+import { imgSrc, inr, unitPrice, packLabel, colourLabel } from "@/lib/catalog";
 import { SITE, asset } from "@/lib/site";
 
 export default function CartDrawer() {
@@ -97,9 +97,19 @@ export default function CartDrawer() {
                       >
                         {p.name}
                       </Link>
-                      <div className="mt-0.5 text-[12px] text-ink-soft">
-                        {l.colour && `${l.colour} · `}Size {l.size}
-                      </div>
+                      {/* Display only — l.colour stays the raw catalogue value,
+                          because it is part of the cart line's identity key. */}
+                      {(() => {
+                        const v = p.variants.find((x) => x.colour === l.colour);
+                        const pack = v && packLabel(p, v);
+                        const shade = v ? colourLabel(p, v) : l.colour;
+                        return (
+                          <div className="mt-0.5 text-[12px] text-ink-soft">
+                            {shade && `${shade} · `}Size {l.size}
+                            {pack ? ` · ${pack}` : null}
+                          </div>
+                        );
+                      })()}
 
                       <div className="mt-2.5 flex items-center justify-between">
                         <div className="flex items-center border border-line">

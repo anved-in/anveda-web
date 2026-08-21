@@ -1,5 +1,5 @@
 import type { Line } from "./cart";
-import { productById, inr, unitPrice } from "./catalog";
+import { productById, inr, unitPrice, packLabel, colourLabel } from "./catalog";
 import { SITE } from "./site";
 
 /**
@@ -86,10 +86,12 @@ export const orderText = (
     .map((l) => {
       const p = productById(l.id);
       if (!p) return null;
-      const shade = l.colour ? ` — ${l.colour}` : "";
-      return `• ${p.name}${shade} — size ${l.size} × ${l.qty} = ${inr(
-        unitPrice(l.id, l.colour) * l.qty,
-      )}`;
+      const v = p.variants.find((x) => x.colour === l.colour);
+      const shade = v ? ` — ${colourLabel(p, v)}` : l.colour ? ` — ${l.colour}` : "";
+      const pack = v ? packLabel(p, v) : null;
+      return `• ${p.name}${shade} — size ${l.size}${
+        pack ? ` (${pack})` : ""
+      } × ${l.qty} = ${inr(unitPrice(l.id, l.colour) * l.qty)}`;
     })
     .filter(Boolean)
     .join("\n");

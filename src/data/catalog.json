@@ -1149,7 +1149,7 @@
    "name": "Kada",
    "price": 699,
    "priceMax": 2300,
-   "pieces": 1,
+   "pieces": 2,
    "unit": "set",
    "sizes": [
     "2.2",
@@ -1165,7 +1165,7 @@
      "image": "kada-green-ball-kada-set-of-2.webp",
      "hex": "#e2d8c4",
      "price": 699,
-     "pieces": 1,
+     "pieces": 2,
      "sizes": [
       "2.2",
       "2.4",
@@ -1179,7 +1179,7 @@
      "image": "kada-premium-statement-flower-kada-set-of-2.webp",
      "hex": "#e2d8c4",
      "price": 1099,
-     "pieces": 1,
+     "pieces": 2,
      "sizes": [
       "2.2",
       "2.4",
@@ -1256,7 +1256,7 @@
      "image": "designer-side-bangles-diamond-shaped-set-of-2.webp",
      "hex": "#e2d8c4",
      "price": 660,
-     "pieces": 4,
+     "pieces": 2,
      "sizes": [
       "2.2",
       "2.4",
@@ -1286,7 +1286,7 @@
      "image": "designer-side-bangles-lakshmi-stone-set-of-2.webp",
      "hex": "#e2d8c4",
      "price": 660,
-     "pieces": 4,
+     "pieces": 2,
      "sizes": [
       "2.2",
       "2.4",
@@ -1428,7 +1428,7 @@
      "image": "designer-side-bangles-two-layer-white-ball-set-of-2.webp",
      "hex": "#e2d8c4",
      "price": 670,
-     "pieces": 12,
+     "pieces": 2,
      "sizes": [
       "2.2",
       "2.4",
@@ -1546,7 +1546,7 @@
      "image": "gunghroo-kashmiri-gold-stones-set-of-4.webp",
      "hex": "#e2d8c4",
      "price": 200,
-     "pieces": 12,
+     "pieces": 4,
      "sizes": [
       "2.2",
       "2.4",

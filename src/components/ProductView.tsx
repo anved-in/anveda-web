@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "@/components/Link";
 import ProductBuy from "@/components/ProductBuy";
 import Price from "@/components/Price";
-import { imgSrc, inr, variantPrice, ALL_SIZES, type Product, type Variant } from "@/lib/catalog";
+import { imgSrc, inr, variantPrice, packCount, colourLabel, ALL_SIZES, type Product, type Variant } from "@/lib/catalog";
 import { asset, SITE } from "@/lib/site";
 
 /**
@@ -35,7 +35,7 @@ export default function ProductView({ p }: { p: Product }) {
           <img
             key={variant.image}
             src={asset(imgSrc(variant.image))}
-            alt={`${p.name} — ${variant.colour}`}
+            alt={`${p.name} — ${colourLabel(p, variant)}`}
             className="h-full w-full object-cover"
             fetchPriority="high"
             decoding="async"
@@ -95,7 +95,10 @@ export default function ProductView({ p }: { p: Product }) {
 
         <dl className="mt-9 border-t border-line">
           {[
-            ["Colour", variant.colour],
+            ["Colour", colourLabel(p, variant)],
+            ...(packCount(p, variant)
+              ? [["In each set", packCount(p, variant) as string] as [string, string]]
+              : []),
             ["Sizes", ALL_SIZES.join(" · ")],
             ["Delivery", `All India by ${SITE.courier} · shipping from ${inr(SITE.shippingFrom)}`],
           ].map(([k, v]) => (
@@ -117,7 +120,7 @@ export default function ProductView({ p }: { p: Product }) {
           </p>
           <a
             href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
-              `Hi ANVEDA! I need help with sizing for ${p.name} (${variant.colour}).`,
+              `Hi ANVEDA! I need help with sizing for ${p.name} (${colourLabel(p, variant)}).`,
             )}`}
             target="_blank"
             rel="noopener noreferrer"

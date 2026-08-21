@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Marks the document as JS-capable and reveals .reveal elements as they enter
@@ -19,6 +20,13 @@ import { useEffect } from "react";
  *    they would stay at opacity:0 forever and read as blank boxes. This is a
  *    phone-only failure: at desktop widths those rails become grids, every item
  *    is in the viewport, and the bug is invisible.
+ *  - it MUST re-run on every navigation. This component lives in the root
+ *    layout, which Next keeps mounted across client-side navigations, so an
+ *    effect keyed on [] would run exactly once for the whole session. Every
+ *    page reached by clicking a link then rendered fresh .reveal elements that
+ *    nothing was observing, and they sat at opacity:0 — a blank page that came
+ *    right on reload, because reloading remounts the layout. Keying the effect
+ *    on the pathname re-observes the new page's elements.
  */
 
 /** True when the element sits inside a horizontally scrollable ancestor. */
@@ -33,6 +41,15 @@ const inHorizontalRail = (el: HTMLElement): boolean => {
 };
 
 export default function Reveal() {
+  // Re-run on every navigation.
+  //
+  // Only the pathname, deliberately: useSearchParams() would opt this component
+  // — and therefore the whole root layout — out of static prerendering, which
+  // breaks the build on /order-confirmed. Query changes (the product page's
+  // ?c= colour swap) re-render existing elements rather than mounting new
+  // .reveal ones, so they need no re-observation.
+  const pathname = usePathname();
+
   useEffect(() => {
     const html = document.documentElement;
     html.classList.add("js");
@@ -75,7 +92,7 @@ export default function Reveal() {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

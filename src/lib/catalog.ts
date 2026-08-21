@@ -156,9 +156,10 @@ export const variantPrice = (p: Product, v: Variant): number =>
  * A colourway's name, cleaned for display.
  *
  * The catalogue stores pack size inside some shade names ("Bell Pearl Flower
- * Set of 4", "Kundan Border Bangles"). We never show pack size anywhere on the
- * storefront, and repeating the family name inside the shade produces tiles
- * like "Border Bangles — Kundan Border Bangles", so both are stripped here.
+ * Set of 4", "Kundan Border Bangles"). Pack size does not belong in a NAME — it
+ * is stated properly next to the quantity picker, via packLabel() — and
+ * repeating the family name inside the shade produces tiles like "Border
+ * Bangles — Kundan Border Bangles", so both are stripped here.
  */
 export const colourLabel = (p: Product, v: Variant): string => {
   let c = v.colour
@@ -205,4 +206,32 @@ export const listingTitle = (
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
   if (norm(c).includes(norm(p.name)) || norm(c) === norm(p.name)) return c;
   return `${p.name} — ${c}`;
+};
+
+/**
+ * How many bangles one unit of a colourway contains, as a short phrase:
+ * "set of 4", "pair", "dozen".
+ *
+ * Pack size is NOT shown on grid tiles — it made the listing read as a
+ * wholesale sheet — but on the product page the customer is about to choose a
+ * quantity, and there it is exactly what they need to know: "1" means one set
+ * of four, not one bangle. Returns null when we do not have a count.
+ */
+export const packLabel = (p: Product, v: Variant): string | null => {
+  // `?? p.pieces` only when the variant has NO figure at all. A variant that
+  // genuinely holds one piece — several kada are sold singly — must read as
+  // "single", never inherit the family's count and claim to be a dozen.
+  const n = v.pieces ?? p.pieces;
+  if (!n) return null;
+  if (n === 1) return "single";
+  if (n === 12) return "dozen";
+  if (n === 2) return "pair";
+  return `set of ${n}`;
+};
+
+/** The same thing spelled out: "12 bangles", "2 bangles", "1 bangle". */
+export const packCount = (p: Product, v: Variant): string | null => {
+  const n = v.pieces ?? p.pieces;
+  if (!n) return null;
+  return n === 1 ? "1 bangle" : `${n} bangles`;
 };

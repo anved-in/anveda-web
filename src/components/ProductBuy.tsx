@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "@/components/Link";
 import { useCart } from "@/lib/cart";
-import { imgSrc, inr, variantPrice, ALL_SIZES, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
+import { imgSrc, inr, variantPrice, packLabel, colourLabel, ALL_SIZES, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
 import { asset } from "@/lib/site";
 
 /**
@@ -33,6 +33,9 @@ export default function ProductBuy({
   const [added, setAdded] = useState(false);
   const { add, setOpen } = useCart();
 
+  // "pair" / "set of 4" / "dozen" — what one unit of this colourway contains.
+  const pack = packLabel(p, variant);
+
   const onAdd = () => {
     if (!size) {
       setErr(true);
@@ -53,7 +56,7 @@ export default function ProductBuy({
             <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
               Colour
             </span>
-            <span className="text-[12.5px] text-ink-soft">{variant.colour}</span>
+            <span className="text-[12.5px] text-ink-soft">{colourLabel(p, variant)}</span>
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2.5">
@@ -65,8 +68,8 @@ export default function ProductBuy({
                   type="button"
                   onClick={() => onVariant(v)}
                   aria-pressed={on}
-                  aria-label={v.colour}
-                  title={v.colour}
+                  aria-label={colourLabel(p, v)}
+                  title={colourLabel(p, v)}
                   className={[
                     "h-[52px] w-[52px] cursor-pointer overflow-hidden border-2 transition-colors",
                     on ? "border-ink" : "border-transparent hover:border-line-strong",
@@ -149,6 +152,13 @@ export default function ProductBuy({
       <div className="mt-7">
         <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
           Quantity
+          {/* What one unit actually contains. Designs come as pairs, sets of
+              four or dozens, so "1" is ambiguous without this. */}
+          {pack && (
+            <span className="ml-1.5 font-medium normal-case tracking-normal text-ink-soft">
+              ({pack})
+            </span>
+          )}
         </span>
         <div className="mt-3 inline-flex items-center border border-line-strong bg-white">
           <button

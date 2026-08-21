@@ -81,7 +81,17 @@ for order, f in enumerate(fams):
         prices = sorted({v["pr"] for v in vs if v.get("pr")})
         sizes = sorted({v["s"] for v in vs if v.get("s")},
                        key=lambda s: (len(s), s))
-        pcs = next((v.get("pcs") for v in vs if v.get("pcs")), None)
+        # Pieces per unit.
+        #
+        # Where the shade NAME states a count ("... Set of 2") and the stored
+        # pcs disagrees, trust the name: it is what the owner typed and what
+        # the customer reads. Six of the twenty-seven named counts conflicted,
+        # e.g. "Green Ball Kada Set of 2" stored as 1, and "Diamond Shaped Set
+        # of 2" stored as 4.
+        m = re.search(r"\b(?:set|pair|pack)\s+of\s+(\d+)\b", colour, re.I)
+        pcs = int(m.group(1)) if m else next(
+            (v.get("pcs") for v in vs if v.get("pcs")), None
+        )
         instock = any(not v.get("o") for v in vs)
         vout.append({
             "colour": cname,
