@@ -44,27 +44,44 @@ export default function CheckoutForm() {
   const [busy, setBusy] = useState(false);
   const [failure, setFailure] = useState<string | null>(null);
 
-  const shipping = shippingFor(subtotal);
-  const total = subtotal + shipping;
+  // Shipping is quoted per PIN code on WhatsApp, not computed here, so the
+  // order total is the item value only. See shippingFor() for why.
+  const total = subtotal;
   const live = paymentsEnabled();
+
+  /**
+   * The bag is NOT cleared when the order is handed off — only once the
+   * customer confirms the message actually went. Opening WhatsApp is not proof
+   * of anything: the tab can fail to open, the app can be missing, or they can
+   * simply come back to change something, and clearing first meant a returning
+   * customer found an empty bag with no way to recover it.
+   */
+  const [confirming, setConfirming] = useState<{
+    ref: string;
+    paymentId?: string;
+    text: string;
+  } | null>(null);
 
   const set = (k: keyof Customer) => (v: string) => {
     setC((cur) => ({ ...cur, [k]: v }));
     if (errs[k]) setErrs((cur) => ({ ...cur, [k]: undefined }));
   };
 
-  // Hand the finished order to the owner on WhatsApp, then clear the bag and
-  // show the confirmation. Used by both the paid and the enquiry paths.
+  // Hand the finished order to the owner on WhatsApp, then ASK whether it
+  // actually went before touching the bag. Used by both the paid and the
+  // enquiry paths.
   const finish = (ref: string, paymentId?: string) => {
-    const text = orderText(
-      ref,
-      { lines, subtotal, shipping, total },
-      c,
-      paymentId,
-    );
-    clear();
-    // Open WhatsApp in a new tab so the confirmation page still loads here.
+    const text = orderText(ref, { lines, subtotal, total }, c, paymentId);
+    // Open WhatsApp in a new tab so this page — and the bag — stay put.
     window.open(waLink(text), "_blank", "noopener");
+    setConfirming({ ref, paymentId, text });
+  };
+
+  /** They confirmed the message was sent: now it is safe to empty the bag. */
+  const confirmSent = () => {
+    if (!confirming) return;
+    const { ref, paymentId } = confirming;
+    clear();
     const q = new URLSearchParams({ ref, ...(paymentId ? { p: paymentId } : {}) });
     router.push(`/order-confirmed/?${q.toString()}`);
   };
@@ -93,7 +110,7 @@ export default function CheckoutForm() {
     try {
       const paymentId = await payWithRazorpay(
         ref,
-        { lines, subtotal, shipping, total },
+        { lines, subtotal, total },
         c,
       );
       // null = the customer closed the widget. Not an error; just stop.
@@ -256,13 +273,19 @@ export default function CheckoutForm() {
             </div>
             <div className="flex justify-between">
               <span className="text-ink-soft">Shipping</span>
-              <span className="font-semibold">{shipping === 0 ? "Free" : inr(shipping)}</span>
+              <span className="text-[13px] text-ink-soft">
+                from {inr(SITE.shippingFrom)} · by PIN code
+              </span>
             </div>
           </div>
           <div className="mt-3 flex justify-between border-t border-line pt-3 text-[17px]">
-            <span className="font-semibold">Total</span>
+            <span className="font-semibold">Items total</span>
             <span className="font-semibold">{inr(total)}</span>
           </div>
+          <p className="mt-2 text-[12px] text-ink-faint">
+            Postage is charged on top and depends on your PIN code. We send you
+            the exact {SITE.courier} amount on WhatsApp before anything is paid.
+          </p>
 
           {failure && (
             <p role="alert" className="mt-4 border border-[#a33a2f] bg-[#a33a2f]/5 p-3 text-[13px] text-[#a33a2f]">
@@ -303,6 +326,55 @@ export default function CheckoutForm() {
           </p>
         </div>
       </div>
+
+      {/* --------------------------------------------- sent? confirmation
+          Shown after WhatsApp is opened. Until "Yes" is pressed the bag is
+          untouched, so backing out of WhatsApp — or never getting there —
+          leaves the order intact and re-sendable. */}
+      {confirming && (
+        <div
+          className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 p-4 sm:items-center"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="sent-title"
+        >
+          <div className="w-full max-w-[420px] bg-white p-6">
+            <h2 id="sent-title" className="font-display text-[22px]">
+              Did your WhatsApp message go through?
+            </h2>
+            <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">
+              We opened WhatsApp with your order{" "}
+              <span className="font-semibold text-ink">{confirming.ref}</span>.
+              Press send there, then confirm below. Your bag is kept until you
+              do.
+            </p>
+
+            <button
+              type="button"
+              onClick={confirmSent}
+              className="mt-5 w-full bg-espresso py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-espresso-2"
+            >
+              Yes — order sent
+            </button>
+
+            <button
+              type="button"
+              onClick={() => window.open(waLink(confirming.text), "_blank", "noopener")}
+              className="mt-2.5 w-full border border-ink py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] transition-colors hover:bg-ink hover:text-white"
+            >
+              Open WhatsApp again
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setConfirming(null)}
+              className="mt-2.5 w-full py-2.5 text-[12.5px] text-ink-soft underline underline-offset-2"
+            >
+              Not yet — keep my bag
+            </button>
+          </div>
+        </div>
+      )}
     </form>
   );
 }

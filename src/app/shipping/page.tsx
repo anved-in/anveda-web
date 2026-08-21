@@ -15,7 +15,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What does shipping cost?",
-    a: `Flat ${inr(SITE.shippingFlat)} anywhere in India, and free on orders of ${inr(SITE.freeShippingAbove)} or more.`,
+    a: `It depends on where it is going. We send everything by ${SITE.courier}, whose rate is set by the destination PIN code and the parcel weight — for a bangle parcel that usually starts around ${inr(SITE.shippingFrom)}. We confirm the exact amount on WhatsApp before you pay anything, so postage is never a surprise on your bill.`,
   },
   {
     q: "Do you ship outside India?",
@@ -61,7 +61,7 @@ export default function ShippingPage() {
             {[
               ["Dispatch", "1–2 working days"],
               ["Delivery", "3–8 working days"],
-              ["Shipping", `${inr(SITE.shippingFlat)} · free over ${inr(SITE.freeShippingAbove)}`],
+              ["Shipping", `By ${SITE.courier} · from ${inr(SITE.shippingFrom)}, by PIN code`],
               ["Breakage", "Replaced or refunded"],
             ].map(([t, d], i) => (
               <div

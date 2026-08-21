@@ -21,8 +21,6 @@ export default function CartDrawer() {
     };
   }, [open, setOpen]);
 
-  const shipping =
-    subtotal === 0 || subtotal >= SITE.freeShippingAbove ? 0 : SITE.shippingFlat;
 
   return (
     <>
@@ -146,17 +144,14 @@ export default function CartDrawer() {
               </div>
               <div className="mt-1.5 flex justify-between text-[14px]">
                 <span className="text-ink-soft">Shipping</span>
-                <span className="font-semibold">{shipping === 0 ? "Free" : inr(shipping)}</span>
+                <span className="text-[13px] text-ink-soft">
+                  from {inr(SITE.shippingFrom)} · by PIN code
+                </span>
               </div>
-              {shipping > 0 && (
-                <p className="mt-2 text-[12px] text-maroon">
-                  Add {inr(SITE.freeShippingAbove - subtotal)} more for free shipping.
-                </p>
-              )}
-              <div className="mt-3 flex justify-between border-t border-line pt-3 text-[16px]">
-                <span className="font-semibold">Total</span>
-                <span className="font-semibold">{inr(subtotal + shipping)}</span>
-              </div>
+              <p className="mt-2 text-[12px] text-ink-faint">
+                Sent by {SITE.courier}. Postage depends on where it is going, so
+                we confirm the exact amount on WhatsApp before you pay.
+              </p>
 
               <Link
                 href="/checkout"

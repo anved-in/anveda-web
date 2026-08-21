@@ -94,10 +94,13 @@ export default function Header() {
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
               </svg>
             </a>
+            {/* Desktop only: on a phone the fixed bottom tab bar already
+                carries a bag button, and two of them on one screen was simply
+                confusing. See <TabBar />. */}
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="relative -mr-2 p-2"
+              className="relative -mr-2 hidden p-2 md:block"
               aria-label={`Open bag${ready && count ? `, ${count} items` : ""}`}
             >
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">

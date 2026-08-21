@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "@/components/Link";
 import { useCart } from "@/lib/cart";
-import { imgSrc, inr, variantPrice, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
+import { imgSrc, inr, variantPrice, ALL_SIZES, SIZE_GUIDE, type Product, type Variant } from "@/lib/catalog";
 import { asset } from "@/lib/site";
 
 /**
@@ -103,7 +103,7 @@ export default function ProductBuy({
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2.5">
-          {(variant.sizes.length ? variant.sizes : p.sizes).map((s) => {
+          {ALL_SIZES.map((s) => {
             const g = SIZE_GUIDE.find((x) => x.size === s);
             const on = size === s;
             return (

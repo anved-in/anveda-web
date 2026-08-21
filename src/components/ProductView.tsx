@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "@/components/Link";
 import ProductBuy from "@/components/ProductBuy";
 import Price from "@/components/Price";
-import { imgSrc, inr, variantPrice, type Product, type Variant } from "@/lib/catalog";
+import { imgSrc, inr, variantPrice, ALL_SIZES, type Product, type Variant } from "@/lib/catalog";
 import { asset, SITE } from "@/lib/site";
 
 /**
@@ -96,8 +96,8 @@ export default function ProductView({ p }: { p: Product }) {
         <dl className="mt-9 border-t border-line">
           {[
             ["Colour", variant.colour],
-            ["Sizes", (variant.sizes.length ? variant.sizes : p.sizes).join(" · ")],
-            ["Delivery", `All India · free above ${inr(SITE.freeShippingAbove)}`],
+            ["Sizes", ALL_SIZES.join(" · ")],
+            ["Delivery", `All India by ${SITE.courier} · shipping from ${inr(SITE.shippingFrom)}`],
           ].map(([k, v]) => (
             <div key={k} className="flex justify-between border-b border-line py-3.5">
               <dt className="text-[12.5px] uppercase tracking-[0.12em] text-ink-soft">

@@ -116,7 +116,18 @@ export const SIZE_GUIDE: { size: string; label: string; cm: string }[] = [
   { size: "2.4", label: "Small", cm: "6.1 cm" },
   { size: "2.6", label: "Regular", cm: "6.5 cm" },
   { size: "2.8", label: "Medium", cm: "7.0 cm" },
+  { size: "2.10", label: "Large", cm: "7.6 cm" },
 ];
+
+/**
+ * Every size is offered on every design.
+ *
+ * The catalogue records which sizes a colourway happens to be holding right
+ * now, but that is a stock snapshot, not a range: anything not on the shelf is
+ * sourced. Showing only the stocked sizes turned a sourcing question into a
+ * dead end for the customer, so the picker always offers the full range.
+ */
+export const ALL_SIZES: string[] = SIZE_GUIDE.map((s) => s.size);
 
 /** True when a family's colourways are not all the same price. */
 export const hasPriceRange = (p: Product): boolean => p.priceMax > p.price;

@@ -12,12 +12,29 @@ export const SITE = {
   description:
     "Handpicked glass, antique and kundan bangles. Chosen in small batches, packed with care, delivered across India.",
   /** The owner's WhatsApp number, digits only, with country code. */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "918217544994",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "917996009966",
   email: "anveda.in@gmail.com",
   instagram: "https://www.instagram.com/anveda.in/",
-  /** Free shipping at or above this order value, in rupees. */
-  freeShippingAbove: 999,
-  shippingFlat: 79,
+
+  /**
+   * Shipping.
+   *
+   * There is no free-shipping threshold — every order pays postage, and the
+   * total the customer agrees to is item value PLUS shipping.
+   *
+   * We ship by DTDC, whose price depends on the destination zone and the
+   * parcel weight, so a single number would be wrong for most orders. DTDC's
+   * published domestic rates for a small parcel run roughly ₹40–100 (Lite) to
+   * ₹150–250 (Plus) before fuel surcharge (~30%) and 18% GST, which is why a
+   * real bangle parcel almost always lands above ₹100.
+   *
+   * So the site does NOT quote a fixed figure. It shows `shippingFrom` as an
+   * indicative minimum, states that the exact amount depends on the PIN code,
+   * and the final figure is confirmed on WhatsApp before payment. That is
+   * honest, and it is what actually happens.
+   */
+  shippingFrom: 100,
+  courier: "DTDC",
 } as const;
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";

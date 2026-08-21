@@ -4,7 +4,6 @@
  * the second copy is aria-hidden so a screen reader reads the line once.
  */
 const LINES = [
-  "Free shipping on orders over ₹999",
   "Handpicked in small batches",
   "Flat 20% off — this week only",
   "Delivered across India",
