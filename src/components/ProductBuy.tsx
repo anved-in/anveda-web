@@ -49,14 +49,23 @@ export default function ProductBuy({
 
   return (
     <div>
-      {/* ------------------------------------------------------------ colour */}
+      {/* ------------------------------------------------------------ colour
+          The ONLY colour picker on the page. The gallery above used to carry a
+          second one, which asked the same question twice; see the note in
+          <ProductView>. Because this is now the single control, the swatches
+          are bigger and the selected one is named above them. */}
       {p.variants.length > 1 && (
         <div className="mt-7">
-          <div className="flex items-baseline justify-between">
+          <div className="flex items-baseline justify-between gap-3">
             <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
               Colour
+              <span className="ml-1.5 font-medium normal-case tracking-normal text-ink-soft">
+                ({p.variants.length})
+              </span>
             </span>
-            <span className="text-[12.5px] text-ink-soft">{colourLabel(p, variant)}</span>
+            <span className="truncate text-[12.5px] font-semibold">
+              {colourLabel(p, variant)}
+            </span>
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2.5">
@@ -71,8 +80,10 @@ export default function ProductBuy({
                   aria-label={colourLabel(p, v)}
                   title={colourLabel(p, v)}
                   className={[
-                    "h-[52px] w-[52px] cursor-pointer overflow-hidden border-2 transition-colors",
-                    on ? "border-ink" : "border-transparent hover:border-line-strong",
+                    "relative h-[62px] w-[62px] cursor-pointer overflow-hidden border-2 transition-all",
+                    on
+                      ? "border-ink ring-1 ring-ink ring-offset-2"
+                      : "border-transparent hover:border-line-strong",
                   ].join(" ")}
                 >
                   {/* The photo is the truest swatch — a flat hex can never
@@ -84,6 +95,11 @@ export default function ProductBuy({
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
+                  {!v.inStock && (
+                    <span className="absolute inset-0 flex items-center justify-center bg-white/70 text-[8.5px] font-bold uppercase tracking-[0.08em] text-ink">
+                      Sold
+                    </span>
+                  )}
                 </button>
               );
             })}

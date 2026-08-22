@@ -43,35 +43,21 @@ export default function ProductView({ p }: { p: Product }) {
           />
         </div>
 
-        {/* Thumbnail strip: a second, larger way into the colourways for anyone
-            who scans images rather than swatches. */}
-        {p.variants.length > 1 && (
-          <div className="no-bar mt-3 flex gap-2.5 overflow-x-auto pb-1">
-            {p.variants.map((v) => (
-              <button
-                key={v.colour}
-                type="button"
-                onClick={() => setVariant(v)}
-                aria-label={v.colour}
-                aria-pressed={v.colour === variant.colour}
-                className={[
-                  "h-[74px] w-[74px] shrink-0 cursor-pointer overflow-hidden border-2 transition-colors",
-                  v.colour === variant.colour
-                    ? "border-ink"
-                    : "border-transparent hover:border-line-strong",
-                ].join(" ")}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={asset(imgSrc(v.image))}
-                  alt=""
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </button>
-            ))}
-          </div>
-        )}
+        {/* There is NO thumbnail strip here, on purpose.
+            It used to list the colourways as photos, directly above the buy
+            box's colour swatches — the same choice, asked twice, one scroll
+            apart. Having picked a shade from the strip, the customer was
+            immediately asked to pick a shade again, which read as though the
+            first choice had not registered.
+
+            A gallery strip is the right pattern when a colourway has SEVERAL
+            photos of itself (front, on-wrist, detail). Ours has exactly one:
+            catalog_photos in the ANVEDA database is keyed PRIMARY KEY
+            (family, colour), so one photo per shade is all it can hold. Until
+            that changes, a strip could only ever repeat the swatches.
+
+            Choosing colour lives in one place: <ProductBuy>, beside size and
+            quantity, where the decision is actually made. */}
       </div>
 
       <div className="w-full md:w-[45%] lg:w-[42%]">
