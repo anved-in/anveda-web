@@ -40,10 +40,17 @@ export default function Header() {
     setMenuPath(next ? path : null);
   };
 
+  // Lock the page behind the drawer, and let Escape close it.
   useEffect(() => {
-    document.body.style.overflow = menu ? "hidden" : "";
+    if (!menu) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuPath(null);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [menu]);
 
@@ -60,11 +67,14 @@ export default function Header() {
               type="button"
               onClick={() => setMenu((v) => !v)}
               className="-ml-2 p-2 md:hidden"
-              aria-label={menu ? "Close menu" : "Open menu"}
+              aria-label="Open menu"
               aria-expanded={menu}
+              aria-controls="mobile-menu"
             >
+              {/* Always the hamburger: the drawer carries its own close
+                  button, and the header sits behind the overlay anyway. */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
-                {menu ? <path d="M5 5l14 14M19 5L5 19" /> : <path d="M3 6h18M3 12h14M3 18h18" />}
+                <path d="M3 6h18M3 12h14M3 18h18" />
               </svg>
             </button>
             {NAV.map((n) => (
@@ -161,17 +171,60 @@ export default function Header() {
         </div>
       </div>
 
-      {menu && (
-        <nav className="max-h-[calc(100dvh-120px)] overflow-y-auto border-b border-line bg-white px-4 pb-8 pt-3 md:hidden">
+      {/* ------------------------------------------------- mobile menu drawer
+          Fixed to the viewport, NOT rendered inline under the header. It used
+          to be a block inside <header>, so opening it halfway down a page put
+          the menu wherever the header happened to be — you had to scroll back
+          to the top to see it. As an overlay it appears over the page from
+          anywhere, and it carries its own close button. */}
+      <div
+        className={[
+          "fixed inset-0 z-[90] bg-black/45 transition-opacity duration-300 md:hidden",
+          menu ? "opacity-100" : "pointer-events-none opacity-0",
+        ].join(" ")}
+        onClick={() => setMenu(false)}
+        aria-hidden="true"
+      />
+      <nav
+        id="mobile-menu"
+        aria-label="Menu"
+        aria-hidden={menu ? undefined : true}
+        className={[
+          "fixed left-0 top-0 z-[95] flex h-[100dvh] w-[84%] max-w-[330px] flex-col bg-white shadow-2xl transition-transform duration-300 md:hidden",
+          menu ? "translate-x-0" : "-translate-x-full",
+        ].join(" ")}
+      >
+        <div className="flex items-center justify-between border-b border-line px-4 py-4">
+          <span className="h-[19px]">
+            <Logo />
+          </span>
+          <button
+            type="button"
+            onClick={() => setMenu(false)}
+            className="-mr-2 p-2"
+            aria-label="Close menu"
+          >
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto overscroll-contain px-4 pb-10">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className="block border-b border-line py-3 text-[13px] uppercase tracking-[0.1em]"
+              onClick={() => setMenu(false)}
+              className={[
+                "block border-b border-line py-3 text-[13px] uppercase tracking-[0.1em]",
+                isActive(path, n.href) ? "font-bold text-maroon" : "",
+              ].join(" ")}
             >
               {n.label}
             </Link>
           ))}
+
           <div className="pb-1 pt-5 text-[10.5px] uppercase tracking-[0.2em] text-ink-faint">
             Collections
           </div>
@@ -179,13 +232,17 @@ export default function Header() {
             <Link
               key={c.slug}
               href={`/collections/${c.slug}`}
-              className="block border-b border-line py-3 text-[13px]"
+              onClick={() => setMenu(false)}
+              className={[
+                "block border-b border-line py-3 text-[13px]",
+                path === `/collections/${c.slug}` ? "font-bold text-maroon" : "",
+              ].join(" ")}
             >
               {c.name}
             </Link>
           ))}
-        </nav>
-      )}
+        </div>
+      </nav>
     </header>
   );
 }

@@ -25,10 +25,12 @@ export default function Price({
       {from && (
         <span className="text-ink-faint text-[0.75em] tracking-wide">from</span>
       )}
+      {/* Selling price first, struck price after it: the number they pay is
+          the one that should be read first. */}
+      <span className="price-now">{t.nowText}</span>
       <span className="price-was text-[0.85em]" aria-label={`Was ${t.wasText}`}>
         {t.wasText}
       </span>
-      <span className="price-now">{t.nowText}</span>
     </span>
   );
 }
