@@ -55,6 +55,45 @@ STORY = {
  "Square Edge Glass Bangles": "A squared edge instead of a round one. It sits flatter on the wrist and gives a stack a harder, more graphic line.",
 }
 
+# ------------------------------------------------------------------ groups
+# The catalogue's own top-level grouping, taken verbatim from the regexes in
+# the ANVEDA catalog page (filterCatalog(), the all-glass / all-ornate /
+# all-layering branches). Kept as the same patterns rather than a hand-written
+# family list so a NEW family lands in the right group automatically.
+#
+#   Glass    - Square Edge, Pastel Palette, Intricate, Petal Stone, Jelly, Phool
+#   Ornate   - Designer Side, Statement, Kada
+#   Layering - Border, Ghunghroo
+GROUPS = [
+    {
+        "slug": "glass",
+        "name": "Glass Bangles",
+        "blurb": "Coloured glass, from clear jelly to cut and stone-set work.",
+        "match": r"Square Edge|Pastel|Intricate|Petal Stone|Jelly|Phool",
+    },
+    {
+        "slug": "ornate",
+        "name": "Ornate Bangles",
+        "blurb": "The worked pieces — statement bangles, kada and designer sides.",
+        "match": r"Designer Side|Statement|Kada",
+    },
+    {
+        "slug": "layering",
+        "name": "Layering Bangles",
+        "blurb": "Slim pieces made to sit either side of a statement bangle.",
+        "match": r"Border|Ghunghroo|Gunghroo",
+    },
+]
+
+
+def group_for(family_name):
+    """Which top-level group a family belongs to, or None."""
+    for g in GROUPS:
+        if re.search(g["match"], family_name, re.I):
+            return g["slug"]
+    return None
+
+
 collections, products, imgs = [], [], {}
 
 for order, f in enumerate(fams):
@@ -117,6 +156,7 @@ for order, f in enumerate(fams):
         "id": cslug,
         "collection": cslug,
         "collectionName": name,
+        "group": group_for(name),
         "name": name,
         "price": min(allp) if allp else None,
         "priceMax": max(allp) if allp else None,
@@ -129,7 +169,7 @@ for order, f in enumerate(fams):
         "image": vout[0]["image"],
     })
     collections.append({
-        "slug": cslug, "name": name,
+        "slug": cslug, "name": name, "group": group_for(name),
         "blurb": BLURB.get(name, ""), "story": STORY.get(name, ""),
         "cover": vout[0]["image"], "order": order,
     })
@@ -191,7 +231,13 @@ for fn, key in imgs.items():
     except Exception as e:
         print(f"  ! {fn}: {e}", file=sys.stderr)
 
-json.dump({"collections": collections, "products": products},
+groups_out = [
+    {k: g[k] for k in ("slug", "name", "blurb")}
+    for g in GROUPS
+    if any(c["group"] == g["slug"] for c in collections)
+]
+
+json.dump({"groups": groups_out, "collections": collections, "products": products},
           open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 nv = sum(len(p["variants"]) for p in products)
 print(f"\n{len(products)} products, {nv} colourways, {new} new photos -> {OUT}")

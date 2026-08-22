@@ -7,6 +7,22 @@ export interface Collection {
   story: string;
   cover: string;
   order: number;
+  /** Top-level group this family sits under: "glass" | "ornate" | "layering". */
+  group: string | null;
+}
+
+/**
+ * The catalogue's three top-level groups — Glass, Ornate, Layering — with the
+ * families hanging underneath. Taken from the ANVEDA catalog's own grouping
+ * (see GROUPS in scripts/gen-catalog.py), so the shop and the catalogue can
+ * never disagree about what belongs where.
+ */
+export interface Group {
+  slug: string;
+  name: string;
+  blurb: string;
+  /** "Glass Bangles" -> "Glass": the nav is tight at 1024px. */
+  short: string;
 }
 
 /** One colourway of a product: its own photo, and a swatch hex when we know it. */
@@ -30,6 +46,8 @@ export interface Product {
   id: string;
   collection: string;
   collectionName: string;
+  /** Top-level group: "glass" | "ornate" | "layering". */
+  group: string | null;
   name: string;
   /** Lowest colourway price — what "from ₹x" shows. */
   price: number;
@@ -46,7 +64,16 @@ export interface Product {
   image: string;
 }
 
-const data = raw as { collections: Collection[]; products: Product[] };
+const data = raw as {
+  groups: Group[];
+  collections: Collection[];
+  products: Product[];
+};
+
+export const groups: Group[] = (data.groups ?? []).map((g) => ({
+  ...g,
+  short: g.name.replace(/\s*bangles?\s*$/i, "").trim() || g.name,
+}));
 
 export const collections: Collection[] = [...data.collections].sort(
   (a, b) => a.order - b.order,
@@ -82,6 +109,17 @@ export const listingsIn = (slug: string): Listing[] =>
       href: `/product/${p.id}/?c=${encodeURIComponent(v.colour)}`,
     })),
   );
+
+export const groupBySlug = (slug: string): Group | undefined =>
+  groups.find((g) => g.slug === slug);
+
+/** The families inside a group, in catalogue order. */
+export const collectionsInGroup = (slug: string): Collection[] =>
+  collections.filter((c) => c.group === slug);
+
+/** Every colourway inside a group. */
+export const listingsInGroup = (slug: string): Listing[] =>
+  collectionsInGroup(slug).flatMap((c) => listingsIn(c.slug));
 
 export const allListings = (): Listing[] =>
   products.flatMap((p) =>

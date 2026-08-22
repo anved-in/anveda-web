@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "@/components/Link";
-import { collections, listingsIn, allListings } from "@/lib/catalog";
+import {
+  collections,
+  listingsIn,
+  allListings,
+  groups,
+  collectionsInGroup,
+  listingsInGroup,
+  imgSrc,
+} from "@/lib/catalog";
+import { asset } from "@/lib/site";
 import ListingCard from "@/components/ListingCard";
 
 export const metadata: Metadata = {
@@ -19,9 +28,48 @@ export default function CollectionsPage() {
             Collections
           </h1>
           <p className="mt-4 max-w-[56ch] text-[15px] text-ink-soft">
-            {allListings().length} designs across {collections.length} collections —
-            from everyday glass to the heavier pieces kept for the big days.
+            {allListings().length} designs across {collections.length} ranges,
+            in three families — glass, ornate and layering.
           </p>
+        </div>
+      </section>
+
+      {/* The three top-level groups first — this is how the catalogue itself
+          is organised, and it is a far shorter decision than eleven ranges. */}
+      <section className="border-b border-line px-4 py-9 sm:px-6">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
+            {groups.map((g) => {
+              const fams = collectionsInGroup(g.slug);
+              return (
+                <Link
+                  key={g.slug}
+                  href={`/shop/${g.slug}`}
+                  className="group block"
+                >
+                  <div className="aspect-[4/3] overflow-hidden bg-cream-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(imgSrc(fams[0]?.cover ?? collections[0].cover))}
+                      alt=""
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h2 className="mt-3 font-display text-[20px] transition-colors group-hover:text-maroon">
+                    {g.name}
+                  </h2>
+                  <p className="mt-1 text-[13.5px] leading-snug text-ink-soft">
+                    {g.blurb}
+                  </p>
+                  <p className="mt-1.5 text-[12px] text-ink-faint">
+                    {fams.length} ranges · {listingsInGroup(g.slug).length} designs
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 

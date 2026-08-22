@@ -5,12 +5,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { useCart } from "@/lib/cart";
-import { collections } from "@/lib/catalog";
+import { collections, groups, collectionsInGroup } from "@/lib/catalog";
 
 /** The reference keeps a short text nav on the left of a single header row. */
 const NAV = [
-  { href: "/", label: "Home" },
-  { href: "/collections", label: "Category" },
   { href: "/reels", label: "Reels" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
@@ -62,7 +60,7 @@ export default function Header() {
           as the one we are matching. */}
       <div className="border-b border-line">
         <div className="mx-auto flex h-[56px] max-w-[1320px] items-center px-4 sm:px-6 md:h-[64px]">
-          <div className="flex flex-1 items-center gap-6">
+          <div className="flex min-w-0 flex-1 items-center gap-4 overflow-hidden lg:gap-5">
             <button
               type="button"
               onClick={() => setMenu((v) => !v)}
@@ -77,34 +75,83 @@ export default function Header() {
                 <path d="M3 6h18M3 12h14M3 18h18" />
               </svg>
             </button>
+            {/* LEFT: the three catalogue groups — the shopping nav, and the
+                only thing that must always be visible. Secondary links live on
+                the right, where there is spare room, so nothing is ever
+                clipped or pushed into the wordmark. */}
+            {groups.map((g) => {
+              const on = path.startsWith(`/shop/${g.slug}`);
+              return (
+                <div key={g.slug} className="group relative hidden md:block">
+                  <Link
+                    href={`/shop/${g.slug}`}
+                    className={[
+                      "flex items-center gap-1 whitespace-nowrap py-2 text-[10.5px] uppercase tracking-[0.06em] transition-colors group-hover:text-maroon lg:text-[11px] lg:tracking-[0.1em]",
+                      on ? "font-bold text-maroon" : "",
+                    ].join(" ")}
+                  >
+                    {/* "Glass Bangles" / "Ornate Bangles" / "Layering
+                        Bangles" do not fit beside a centred wordmark at
+                        1024px, so the shared word is dropped until there is
+                        room for it. The group page still carries the full
+                        name. */}
+                    <span className="xl:hidden">{g.short}</span>
+                    <span className="hidden xl:inline">{g.name}</span>
+                    <span aria-hidden="true" className="text-[8px]">▾</span>
+                  </Link>
+                  {/* CSS-only dropdown: opens on hover and on keyboard focus
+                      within, so it is reachable without a pointer. */}
+                  <div className="invisible absolute left-0 top-full z-50 w-[236px] border border-line bg-white py-2 opacity-0 shadow-[0_8px_28px_rgba(0,0,0,0.1)] transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <Link
+                      href={`/shop/${g.slug}`}
+                      className="block px-4 py-2 text-[12px] font-semibold transition-colors hover:bg-cream-2 hover:text-maroon"
+                    >
+                      All {g.name}
+                    </Link>
+                    {collectionsInGroup(g.slug).map((c) => (
+                      <Link
+                        key={c.slug}
+                        href={`/collections/${c.slug}`}
+                        className="block px-4 py-2 text-[12px] transition-colors hover:bg-cream-2 hover:text-maroon"
+                      >
+                        {c.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <Link
+            href="/"
+            aria-label="ANVEDA home"
+            className="h-[20px] shrink-0 px-4 md:h-[24px] md:px-6"
+          >
+            <Logo />
+          </Link>
+
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-4 overflow-hidden lg:gap-5">
             {NAV.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 className={[
-                  "hidden whitespace-nowrap text-[11px] uppercase tracking-[0.1em] transition-colors hover:text-maroon md:block",
+                  // xl and up only. Below that the three group dropdowns fill
+                  // the row, and these are all reachable from the footer and
+                  // the mobile drawer, so hiding them costs nothing.
+                  "hidden whitespace-nowrap text-[10.5px] uppercase tracking-[0.06em] transition-colors hover:text-maroon xl:block xl:text-[11px] xl:tracking-[0.1em]",
                   isActive(path, n.href) ? "font-bold text-maroon" : "",
                 ].join(" ")}
               >
                 {n.label}
               </Link>
             ))}
-          </div>
-
-          <Link
-            href="/"
-            aria-label="ANVEDA home"
-            className="h-[20px] shrink-0 md:h-[24px]"
-          >
-            <Logo />
-          </Link>
-
-          <div className="flex flex-1 items-center justify-end gap-0.5">
             <a
               href="https://www.instagram.com/anveda.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden p-2 transition-colors hover:text-maroon md:block"
+              className="hidden shrink-0 p-2 transition-colors hover:text-maroon md:block"
               aria-label="ANVEDA on Instagram"
             >
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -150,7 +197,27 @@ export default function Header() {
           path.startsWith("/reels") ? "hidden" : "",
         ].join(" ")}
       >
+        {/* Groups lead the chip row, then the individual ranges — the same
+            order the catalogue uses. */}
         <div className="no-bar flex gap-2 overflow-x-auto px-4 py-2.5">
+          {groups.map((g) => {
+            const on = path.startsWith(`/shop/${g.slug}`);
+            return (
+              <Link
+                key={g.slug}
+                href={`/shop/${g.slug}`}
+                className={[
+                  "whitespace-nowrap rounded-full border px-3.5 py-1.5 text-[10.5px] font-bold uppercase tracking-[0.08em] transition-colors",
+                  on
+                    ? "border-maroon bg-maroon text-white"
+                    : "border-ink text-ink",
+                ].join(" ")}
+              >
+                {g.name}
+              </Link>
+            );
+          })}
+          <span aria-hidden="true" className="my-1 w-px shrink-0 bg-line" />
           {collections.map((c) => {
             const on = path === `/collections/${c.slug}`;
             return (
@@ -225,21 +292,37 @@ export default function Header() {
             </Link>
           ))}
 
-          <div className="pb-1 pt-5 text-[10.5px] uppercase tracking-[0.2em] text-ink-faint">
-            Collections
-          </div>
-          {collections.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/collections/${c.slug}`}
-              onClick={() => setMenu(false)}
-              className={[
-                "block border-b border-line py-3 text-[13px]",
-                path === `/collections/${c.slug}` ? "font-bold text-maroon" : "",
-              ].join(" ")}
-            >
-              {c.name}
-            </Link>
+          {/* Grouped exactly as the catalogue groups them. */}
+          {groups.map((g) => (
+            <div key={g.slug}>
+              <Link
+                href={`/shop/${g.slug}`}
+                onClick={() => setMenu(false)}
+                className={[
+                  "mt-5 block pb-1 text-[10.5px] uppercase tracking-[0.2em]",
+                  path.startsWith(`/shop/${g.slug}`)
+                    ? "font-bold text-maroon"
+                    : "text-ink-faint",
+                ].join(" ")}
+              >
+                {g.name}
+              </Link>
+              {collectionsInGroup(g.slug).map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/collections/${c.slug}`}
+                  onClick={() => setMenu(false)}
+                  className={[
+                    "block border-b border-line py-3 text-[13px]",
+                    path === `/collections/${c.slug}`
+                      ? "font-bold text-maroon"
+                      : "",
+                  ].join(" ")}
+                >
+                  {c.name}
+                </Link>
+              ))}
+            </div>
           ))}
         </div>
       </nav>
