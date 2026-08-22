@@ -11,10 +11,19 @@ import { collections } from "@/lib/catalog";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/collections", label: "Category" },
+  { href: "/reels", label: "Reels" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
   { href: "/sizing", label: "Sizing" },
 ];
+
+/** Sub-route aware: /collections/kada and /product/x both light "Category". */
+const isActive = (path: string, href: string): boolean => {
+  if (href === "/") return path === "/";
+  if (href === "/collections")
+    return path.startsWith("/collections") || path.startsWith("/product");
+  return path.startsWith(href);
+};
 
 export default function Header() {
   const path = usePathname();
@@ -64,7 +73,7 @@ export default function Header() {
                 href={n.href}
                 className={[
                   "hidden whitespace-nowrap text-[11px] uppercase tracking-[0.1em] transition-colors hover:text-maroon md:block",
-                  path === n.href ? "text-maroon" : "",
+                  isActive(path, n.href) ? "font-bold text-maroon" : "",
                 ].join(" ")}
               >
                 {n.label}
@@ -123,8 +132,14 @@ export default function Header() {
       </div>
 
       {/* Mobile category chips — the reference's scrolling pill row. Hidden on
-          desktop, where the same collections are reachable from Category. */}
-      <div className="border-b border-line md:hidden">
+          desktop, where the same collections are reachable from Category, and
+          hidden on /reels, where the feed is meant to own the whole screen. */}
+      <div
+        className={[
+          "border-b border-line md:hidden",
+          path.startsWith("/reels") ? "hidden" : "",
+        ].join(" ")}
+      >
         <div className="no-bar flex gap-2 overflow-x-auto px-4 py-2.5">
           {collections.map((c) => {
             const on = path === `/collections/${c.slug}`;

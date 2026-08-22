@@ -58,11 +58,8 @@ export default function ListingCard({
           <div className="mt-1.5">
             <Price price={price} size="sm" />
           </div>
-          {showColour && (
-            <div className="mt-1 text-[11.5px] text-ink-faint">
-              {p.variants.length} colours
-            </div>
-          )}
+          {/* No "N colours" line: every colourway is already its own tile in
+              the grid, so the count restated the obvious under each one. */}
         </div>
       </Link>
     </article>

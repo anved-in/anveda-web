@@ -134,6 +134,49 @@ for order, f in enumerate(fams):
         "cover": vout[0]["image"], "order": order,
     })
 
+# ---------------------------------------------------------------- reels
+# Families in the ANVEDA catalogue can carry a reel cover ("rc") and, for
+# combos, a reel_url. We import whatever is there so the storefront's reel feed
+# is populated from the same source as everything else.
+#
+# Priority, per the owner: an UPLOADED video always beats an Instagram link.
+# The generator never touches public/video/reels — files dropped in there are
+# matched by id below, and win.
+REELDIR = os.path.join(ROOT, "public", "video", "reels")
+REELS_OUT = os.path.join(ROOT, "src", "data", "reels.json")
+
+os.makedirs(REELDIR, exist_ok=True)
+existing_video = {
+    os.path.splitext(f)[0]: f"/video/reels/{f}"
+    for f in os.listdir(REELDIR)
+    if f.lower().endswith((".mp4", ".webm", ".mov"))
+}
+
+reels_out = []
+for f in fams:
+    rc = f.get("rc")
+    if not rc:
+        continue
+    fam_slug = slug(f["n"])
+    cover_file = f"reel-{fam_slug}.jpg"
+    imgs[cover_file] = rc                      # downloaded with the rest
+    reels_out.append({
+        "id": fam_slug,
+        # An uploaded file wins; otherwise fall back to the Instagram link.
+        "video": existing_video.get(fam_slug),
+        "instagram": f.get("reel") or None,
+        "cover": f"/img/products/{cover_file}",
+        "title": f["n"],
+        "caption": BLURB.get(f["n"], ""),
+        "productId": fam_slug,
+        "colour": None,
+    })
+
+json.dump({"reels": reels_out}, open(REELS_OUT, "w", encoding="utf-8"),
+          ensure_ascii=False, indent=1)
+print(f"{len(reels_out)} reels "
+      f"({sum(1 for r in reels_out if r['video'])} with uploaded video) -> {REELS_OUT}")
+
 os.makedirs(IMGDIR, exist_ok=True)
 new = 0
 for fn, key in imgs.items():

@@ -47,7 +47,9 @@ export interface Customer {
 export interface OrderSummary {
   lines: Line[];
   subtotal: number;
-  /** Item value only. Postage is quoted separately, against the real PIN code. */
+  /** Estimated postage for the destination PIN — see lib/shipping.ts. */
+  shipping: number;
+  /** subtotal + shipping: what the customer is actually charged. */
   total: number;
 }
 
@@ -59,15 +61,10 @@ export const paymentsEnabled = (): boolean =>
   RAZORPAY_KEY.startsWith("rzp_");
 
 /**
- * Shipping is NOT computed here.
- *
- * We ship by DTDC and the price depends on the destination PIN code and the
- * parcel weight, so any number this function invented would be wrong for most
- * orders — and quoting a total the customer is not actually charged is worse
- * than quoting none. The order therefore carries the item value only, and the
- * postage is confirmed on WhatsApp against the real address before payment.
+ * Shipping comes from the destination PIN code — see lib/shipping.ts, which
+ * carries DTDC's zone bands. Re-exported here so callers have one import.
  */
-export const shippingFor = (): null => null;
+export { quoteShipping } from "./shipping";
 
 /** A short human-readable reference the customer and owner can both quote. */
 export const makeRef = (): string =>
@@ -101,10 +98,9 @@ export const orderText = (
     "",
     items,
     "",
-    `*Items: ${inr(o.subtotal)}*`,
-    `Shipping: to be confirmed for this PIN code (${SITE.courier}, from ${inr(
-      SITE.shippingFrom,
-    )})`,
+    `Items: ${inr(o.subtotal)}`,
+    `Shipping (${SITE.courier}, est.): ${inr(o.shipping)}`,
+    `*Total: ${inr(o.total)}*`,
     "",
     paymentId ? `Payment ID: ${paymentId}` : "Payment: pending",
     "",

@@ -7,6 +7,7 @@ import ProductBuy from "@/components/ProductBuy";
 import Price from "@/components/Price";
 import { imgSrc, inr, variantPrice, packCount, colourLabel, ALL_SIZES, type Product, type Variant } from "@/lib/catalog";
 import { asset, SITE } from "@/lib/site";
+import { SHIPPING_FROM } from "@/lib/shipping";
 
 /**
  * Product page body. A client component because the main photograph has to
@@ -100,7 +101,7 @@ export default function ProductView({ p }: { p: Product }) {
               ? [["In each set", packCount(p, variant) as string] as [string, string]]
               : []),
             ["Sizes", ALL_SIZES.join(" · ")],
-            ["Delivery", `All India by ${SITE.courier} · shipping from ${inr(SITE.shippingFrom)}`],
+            ["Delivery", `All India by ${SITE.courier} · from ${inr(SHIPPING_FROM)}`],
           ].map(([k, v]) => (
             <div key={k} className="flex justify-between border-b border-line py-3.5">
               <dt className="text-[12.5px] uppercase tracking-[0.12em] text-ink-soft">

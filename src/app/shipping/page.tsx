@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { inr } from "@/lib/catalog";
 import { SITE, waLink } from "@/lib/site";
+import { SHIPPING_FROM } from "@/lib/shipping";
 
 export const metadata: Metadata = {
   title: "Shipping & Returns",
@@ -15,7 +16,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What does shipping cost?",
-    a: `It depends on where it is going. We send everything by ${SITE.courier}, whose rate is set by the destination PIN code and the parcel weight — for a bangle parcel that usually starts around ${inr(SITE.shippingFrom)}. We confirm the exact amount on WhatsApp before you pay anything, so postage is never a surprise on your bill.`,
+    a: `It depends on where it is going. We send everything by ${SITE.courier}, whose rate is set by the destination PIN code and the parcel weight — for a bangle parcel that starts at ${inr(SHIPPING_FROM)} within Karnataka and rises with distance. We confirm the exact amount on WhatsApp before you pay anything, so postage is never a surprise on your bill.`,
   },
   {
     q: "Do you ship outside India?",
@@ -61,7 +62,7 @@ export default function ShippingPage() {
             {[
               ["Dispatch", "1–2 working days"],
               ["Delivery", "3–8 working days"],
-              ["Shipping", `By ${SITE.courier} · from ${inr(SITE.shippingFrom)}, by PIN code`],
+              ["Shipping", `By ${SITE.courier} · from ${inr(SHIPPING_FROM)}, priced by PIN code`],
               ["Breakage", "Replaced or refunded"],
             ].map(([t, d], i) => (
               <div

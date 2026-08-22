@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCart, lineProduct } from "@/lib/cart";
-import { imgSrc, inr, unitPrice } from "@/lib/catalog";
+import { imgSrc, inr, unitPrice, productById } from "@/lib/catalog";
 import { asset, SITE, waLink } from "@/lib/site";
 import {
   type Customer,
@@ -12,8 +12,8 @@ import {
   orderText,
   payWithRazorpay,
   paymentsEnabled,
-  shippingFor,
 } from "@/lib/payment";
+import { quoteShipping } from "@/lib/shipping";
 
 const EMPTY: Customer = {
   name: "", email: "", phone: "", address: "",
@@ -44,9 +44,16 @@ export default function CheckoutForm() {
   const [busy, setBusy] = useState(false);
   const [failure, setFailure] = useState<string | null>(null);
 
-  // Shipping is quoted per PIN code on WhatsApp, not computed here, so the
-  // order total is the item value only. See shippingFor() for why.
-  const total = subtotal;
+  // Shipping is quoted from the PIN code the customer is typing, and re-quotes
+  // as they type it, so the total is never a surprise at the last step.
+  const pieces = lines.reduce((n, l) => {
+    const p = productById(l.id);
+    const v = p?.variants.find((x) => x.colour === l.colour);
+    return n + (v?.pieces ?? p?.pieces ?? 12) * l.qty;
+  }, 0);
+  const quote = quoteShipping(c.pin, pieces);
+  const shipping = quote.amount;
+  const total = subtotal + shipping;
   const live = paymentsEnabled();
 
   /**
@@ -71,7 +78,7 @@ export default function CheckoutForm() {
   // actually went before touching the bag. Used by both the paid and the
   // enquiry paths.
   const finish = (ref: string, paymentId?: string) => {
-    const text = orderText(ref, { lines, subtotal, total }, c, paymentId);
+    const text = orderText(ref, { lines, subtotal, shipping, total }, c, paymentId);
     // Open WhatsApp in a new tab so this page — and the bag — stay put.
     window.open(waLink(text), "_blank", "noopener");
     setConfirming({ ref, paymentId, text });
@@ -110,7 +117,7 @@ export default function CheckoutForm() {
     try {
       const paymentId = await payWithRazorpay(
         ref,
-        { lines, subtotal, total },
+        { lines, subtotal, shipping, total },
         c,
       );
       // null = the customer closed the widget. Not an error; just stop.
@@ -272,19 +279,34 @@ export default function CheckoutForm() {
               <span className="font-semibold">{inr(subtotal)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-ink-soft">Shipping</span>
-              <span className="text-[13px] text-ink-soft">
-                from {inr(SITE.shippingFrom)} · by PIN code
+              <span className="text-ink-soft">
+                Shipping
+                {quote.known && (
+                  <span className="ml-1 text-[12px] text-ink-faint">
+                    · {quote.label}
+                  </span>
+                )}
               </span>
+              <span className="font-semibold">{inr(shipping)}</span>
             </div>
           </div>
           <div className="mt-3 flex justify-between border-t border-line pt-3 text-[17px]">
-            <span className="font-semibold">Items total</span>
+            <span className="font-semibold">Total</span>
             <span className="font-semibold">{inr(total)}</span>
           </div>
           <p className="mt-2 text-[12px] text-ink-faint">
-            Postage is charged on top and depends on your PIN code. We send you
-            the exact {SITE.courier} amount on WhatsApp before anything is paid.
+            {quote.known ? (
+              <>
+                {SITE.courier} to {quote.label.toLowerCase()}, about {quote.days}.
+                Postage is an estimate — we confirm the exact docket amount on
+                WhatsApp before anything is paid.
+              </>
+            ) : (
+              <>
+                Enter your PIN code and we will price the {SITE.courier} parcel
+                for your area. Until then this shows our all-India rate.
+              </>
+            )}
           </p>
 
           {failure && (

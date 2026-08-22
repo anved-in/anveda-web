@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useCart, lineProduct } from "@/lib/cart";
 import { imgSrc, inr, unitPrice, packLabel, colourLabel } from "@/lib/catalog";
 import { SITE, asset } from "@/lib/site";
+import { SHIPPING_FROM } from "@/lib/shipping";
 
 export default function CartDrawer() {
   const { open, setOpen, lines, setQty, remove, subtotal, count } = useCart();
@@ -152,15 +153,17 @@ export default function CartDrawer() {
                 <span className="text-ink-soft">Subtotal</span>
                 <span className="font-semibold">{inr(subtotal)}</span>
               </div>
+              {/* The bag has no address yet, so shipping cannot be priced
+                  here — it is quoted from the PIN code at checkout. */}
               <div className="mt-1.5 flex justify-between text-[14px]">
                 <span className="text-ink-soft">Shipping</span>
                 <span className="text-[13px] text-ink-soft">
-                  from {inr(SITE.shippingFrom)} · by PIN code
+                  from {inr(SHIPPING_FROM)} · at checkout
                 </span>
               </div>
               <p className="mt-2 text-[12px] text-ink-faint">
-                Sent by {SITE.courier}. Postage depends on where it is going, so
-                we confirm the exact amount on WhatsApp before you pay.
+                Sent by {SITE.courier}. Enter your PIN code at checkout and we
+                price the parcel for your area.
               </p>
 
               <Link
