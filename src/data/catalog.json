@@ -294,6 +294,21 @@
      "focal": "46.28% 47.13%"
     },
     {
+     "colour": "Parrot Green",
+     "image": "intricate-glass-bangle-parrot-green.webp",
+     "hex": "#35d016",
+     "price": 320,
+     "pieces": 12,
+     "sizes": [
+      "2.2",
+      "2.4",
+      "2.6",
+      "2.8"
+     ],
+     "inStock": true,
+     "focal": "44.99% 60.93%"
+    },
+    {
      "colour": "Purple",
      "image": "intricate-glass-bangle-purple.webp",
      "hex": "#c75dee",
@@ -1654,6 +1669,35 @@
      ],
      "inStock": true,
      "focal": "47.3% 54.97%"
+    },
+    {
+     "colour": "Floral Red Green Square Set of 2",
+     "image": "designer-side-bangles-floral-red-green-square-set-of-2.webp",
+     "hex": "#e2d8c4",
+     "price": 1200,
+     "pieces": 2,
+     "sizes": [
+      "2.2",
+      "2.4",
+      "2.6",
+      "2.8"
+     ],
+     "inStock": true,
+     "focal": "37.93% 55.06%"
+    },
+    {
+     "colour": "Kashu Side Bangles",
+     "image": "designer-side-bangles-kashu-side-bangles.webp",
+     "hex": "#e2d8c4",
+     "price": 399,
+     "pieces": 4,
+     "sizes": [
+      "2.2",
+      "2.4",
+      "2.6"
+     ],
+     "inStock": true,
+     "focal": "51.95% 54.54%"
     },
     {
      "colour": "Kashu with Pearl Flower Set of 2",
