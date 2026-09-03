@@ -1554,7 +1554,7 @@
      "colour": "Premium Statement Flower Kada Set of 2",
      "image": "kada-premium-statement-flower-kada-set-of-2.webp",
      "hex": "#e2d8c4",
-     "price": 1099,
+     "price": 1199,
      "pieces": 2,
      "sizes": [
       "2.2",
@@ -1703,20 +1703,6 @@
      "colour": "Kashu with Pearl Flower Set of 2",
      "image": "designer-side-bangles-kashu-with-pearl-flower-set-of-2.webp",
      "hex": "#e2d8c4",
-     "price": 799,
-     "pieces": 2,
-     "sizes": [
-      "2.2",
-      "2.4",
-      "2.6"
-     ],
-     "inStock": true,
-     "focal": "53.14% 64.77%"
-    },
-    {
-     "colour": "Kashu with Red Green Stone Set of 2",
-     "image": "designer-side-bangles-kashu-with-red-green-stone-set-of-2.webp",
-     "hex": "#e2d8c4",
      "price": 599,
      "pieces": 2,
      "sizes": [
@@ -1725,7 +1711,21 @@
       "2.6"
      ],
      "inStock": true,
-     "focal": "52.27% 55.61%"
+     "focal": "53.11% 64.53%"
+    },
+    {
+     "colour": "Kashu with Red Green Stone Set of 2",
+     "image": "designer-side-bangles-kashu-with-red-green-stone-set-of-2.webp",
+     "hex": "#e2d8c4",
+     "price": 620,
+     "pieces": 2,
+     "sizes": [
+      "2.2",
+      "2.4",
+      "2.6"
+     ],
+     "inStock": true,
+     "focal": "53.7% 56.69%"
     },
     {
      "colour": "Lakshmi Floral Drop Set of 4",
