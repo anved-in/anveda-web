@@ -166,16 +166,16 @@ export default function ProductBuy({
 
       {/* ---------------------------------------------------------- quantity */}
       <div className="mt-7">
-        <span className="text-[12px] font-bold uppercase tracking-[0.18em]">
+        <div className="text-[12px] font-bold uppercase tracking-[0.18em]">
           Quantity
           {/* What one unit actually contains. Designs come as pairs, sets of
               four or dozens, so "1" is ambiguous without this. */}
           {pack && (
-            <span className="ml-1.5 font-medium normal-case tracking-normal text-ink-soft">
+            <span className="ml-2.5 font-medium normal-case tracking-normal text-ink-soft">
               ({pack})
             </span>
           )}
-        </span>
+        </div>
         <div className="mt-3 inline-flex items-center border border-line-strong bg-white">
           <button
             type="button"

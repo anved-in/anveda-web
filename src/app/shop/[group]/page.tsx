@@ -7,6 +7,7 @@ import {
   groupBySlug,
   collectionsInGroup,
   listingsInGroup,
+  listingsIn,
   imgSrc,
 } from "@/lib/catalog";
 import { asset } from "@/lib/site";
@@ -67,38 +68,60 @@ export default async function GroupPage({
         </div>
       </section>
 
-      {/* The families in this group, as a row of covers. */}
+      {/* The families in this group, as a row of covers. Each is a range with
+          several colourways inside, not a single item — the count badge and
+          "Shop the range" label say so, since the cover photo alone reads as
+          just another product next to the individual-colourway tiles below. */}
       <section className="px-4 py-9 sm:px-6">
         <div className="mx-auto max-w-[1320px]">
+          <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-faint">
+            Ranges in {g.name}
+          </h2>
           <div className="no-bar flex snap-x gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-6 md:gap-5 md:overflow-visible">
-            {families.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/collections/${c.slug}`}
-                className="group w-[42%] shrink-0 snap-start md:w-auto"
-              >
-                <div className="aspect-square overflow-hidden bg-cream-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={asset(imgSrc(c.cover))}
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="pt-2.5 text-center text-[12.5px] transition-colors group-hover:text-maroon">
-                  {c.name}
-                </div>
-              </Link>
-            ))}
+            {families.map((c) => {
+              const count = listingsIn(c.slug).length;
+              return (
+                <Link
+                  key={c.slug}
+                  href={`/collections/${c.slug}`}
+                  className="group w-[42%] shrink-0 snap-start md:w-auto"
+                >
+                  <div className="relative aspect-square overflow-hidden bg-cream-2 ring-1 ring-inset ring-ink/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(imgSrc(c.cover))}
+                      alt=""
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    {count > 1 && (
+                      <span className="absolute bottom-2 left-2 rounded-full bg-ink/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] text-cream">
+                        {count} colours
+                      </span>
+                    )}
+                  </div>
+                  <div className="pt-2.5 text-center">
+                    <div className="text-[12.5px] transition-colors group-hover:text-maroon">
+                      {c.name}
+                    </div>
+                    <div className="mt-0.5 text-[10.5px] uppercase tracking-[0.1em] text-maroon">
+                      Shop the range →
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Everything in the group, so it can be browsed without drilling in. */}
-      <section className="px-4 pb-14 sm:px-6">
+      <section className="border-t border-line px-4 pb-14 pt-9 sm:px-6">
         <div className="mx-auto max-w-[1320px]">
+          <h2 className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-faint">
+            Every colourway ({items.length})
+          </h2>
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
             {items.map((l, i) => (
               <ListingCard

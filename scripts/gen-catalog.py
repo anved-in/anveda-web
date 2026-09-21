@@ -132,6 +132,12 @@ for order, f in enumerate(fams):
             (v.get("pcs") for v in vs if v.get("pcs")), None
         )
         instock = any(not v.get("o") for v in vs)
+        # size -> CRM products.id. The CRM stores one product row per
+        # colour+size; the storefront collapses sizes into a list, so this map
+        # is the ONLY thing that can turn a cart line back into the exact
+        # product row an order must reference. Without it the checkout cannot
+        # create a real CRM order (see Anveda CMS 2.0 /api/online-order).
+        pids = {v["s"]: v["i"] for v in vs if v.get("s") and v.get("i")}
         vout.append({
             "colour": cname,
             "image": img,
@@ -139,6 +145,7 @@ for order, f in enumerate(fams):
             "price": prices[0] if prices else None,
             "pieces": pcs,
             "sizes": sizes,
+            "pids": pids,
             "inStock": instock,
             # focal point from the admin crop, as CSS object-position
             "focal": (f"{cp['fx']}% {cp['fy']}%" if cp.get("fx") is not None else None),

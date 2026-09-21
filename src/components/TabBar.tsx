@@ -112,7 +112,7 @@ export default function TabBar() {
         {ready && count > 0 && (
           <span
             suppressHydrationWarning
-            className="absolute right-[22%] top-1.5 flex h-[15px] min-w-[15px] items-center justify-center rounded-full bg-maroon px-1 text-[9px] font-bold text-white"
+            className="absolute right-[18%] top-2 flex h-[15px] min-w-[15px] items-center justify-center rounded-full bg-maroon px-1.5 text-[8.5px] font-bold leading-none tabular-nums text-white"
           >
             {count}
           </span>

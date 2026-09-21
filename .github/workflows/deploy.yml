@@ -39,6 +39,14 @@ jobs:
           # it does not authorise charges). Set it as a repository VARIABLE, not
           # a secret — secrets are unavailable to static client bundles anyway.
           NEXT_PUBLIC_RAZORPAY_KEY_ID: ${{ vars.NEXT_PUBLIC_RAZORPAY_KEY_ID }}
+          # Turnstile's PUBLIC site key. Without it the widget never renders,
+          # no token is produced, and the CRM's order intake refuses every
+          # checkout — so an unset variable here silently breaks paid orders.
+          # Repository VARIABLE, same reasoning as the Razorpay key above.
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          # Where the CRM Worker lives. Defaults in code; override only if the
+          # Worker moves to a custom domain.
+          NEXT_PUBLIC_CRM_ORIGIN: ${{ vars.NEXT_PUBLIC_CRM_ORIGIN }}
         run: npm run build
 
       - name: Add .nojekyll

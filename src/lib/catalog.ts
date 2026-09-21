@@ -37,6 +37,13 @@ export interface Variant {
   pieces: number | null;
   /** Sizes this colourway is actually stocked in. */
   sizes: string[];
+  /**
+   * size -> CRM `products.id`. The CRM keeps one product row per colour+size;
+   * this map is what turns a cart line back into the exact row an order must
+   * reference, and is the only reason checkout can create a real CRM order.
+   * Written by scripts/gen-catalog.py — never hand-edit.
+   */
+  pids: Record<string, number>;
   inStock: boolean;
   /** Admin-set crop focus, as a CSS object-position value. */
   focal: string | null;
@@ -64,8 +71,11 @@ export interface Product {
   image: string;
 }
 
+// `short` is derived below, not stored — so the JSON's group shape is Group
+// minus that field. Casting to Group[] here claimed the file carried a field
+// it never has, which TypeScript rejects outright.
 const data = raw as {
-  groups: Group[];
+  groups: Omit<Group, "short">[];
   collections: Collection[];
   products: Product[];
 };

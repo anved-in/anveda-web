@@ -14,11 +14,28 @@ import {
   paymentsEnabled,
 } from "@/lib/payment";
 import { quoteShipping } from "@/lib/shipping";
+import { createCrmOrder, OrderIntakeError } from "@/lib/orders";
+import Turnstile, { TURNSTILE_SITE_KEY } from "./Turnstile";
 
 const EMPTY: Customer = {
   name: "", email: "", phone: "", address: "",
   city: "", state: "", pin: "", notes: "",
 };
+
+// Native <datalist> autocomplete: typing "kar" suggests "Karnataka" etc.,
+// with no extra dependency and no custom dropdown to keep in sync with focus/
+// keyboard behaviour — the browser already handles that.
+const IN_STATES = [
+  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
+  "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
+  "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand",
+  "West Bengal",
+  "Andaman and Nicobar Islands", "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Jammu and Kashmir",
+  "Ladakh", "Lakshadweep", "Puducherry",
+];
 
 // Field-level validation. Kept explicit rather than pulling in a schema library
 // for eight fields — the rules are the business rules, in one readable place.
@@ -43,6 +60,7 @@ export default function CheckoutForm() {
   const [errs, setErrs] = useState<Partial<Record<keyof Customer, string>>>({});
   const [busy, setBusy] = useState(false);
   const [failure, setFailure] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   // Shipping is quoted from the PIN code the customer is typing, and re-quotes
   // as they type it, so the total is never a surprise at the last step.
@@ -115,15 +133,35 @@ export default function CheckoutForm() {
 
     setBusy(true);
     try {
-      const paymentId = await payWithRazorpay(
+      // The CRM creates the real order FIRST and owns the reference from here
+      // on: Razorpay carries that ORD-xxx in its notes, and the webhook uses
+      // it to mark the order paid. Creating it after payment instead would
+      // leave money arriving for an order nothing knows about.
+      const { ref: orderRef } = await createCrmOrder({
         ref,
+        customer: c,
+        lines,
+        shipping,
+        turnstileToken: turnstileToken ?? "",
+      });
+
+      const paymentId = await payWithRazorpay(
+        orderRef,
         { lines, subtotal, shipping, total },
         c,
       );
-      // null = the customer closed the widget. Not an error; just stop.
-      if (paymentId) finish(ref, paymentId);
+      // null = the customer closed the widget. Not an error; just stop. The
+      // order stays in the CRM as pending, which is the honest state — she
+      // may well come back and pay.
+      if (paymentId) finish(orderRef, paymentId);
     } catch (err) {
-      setFailure(err instanceof Error ? err.message : "Payment could not be completed.");
+      setFailure(
+        err instanceof OrderIntakeError
+          ? err.message
+          : err instanceof Error
+            ? err.message
+            : "Payment could not be completed.",
+      );
     } finally {
       setBusy(false);
     }
@@ -173,6 +211,12 @@ export default function CheckoutForm() {
 
   return (
     <form onSubmit={onSubmit} className="mt-8 flex flex-wrap gap-y-10">
+      <datalist id="in-states">
+        {IN_STATES.map((s) => (
+          <option key={s} value={s} />
+        ))}
+      </datalist>
+
       {/* ------------------------------------------------------- details */}
       <div className="w-full md:w-[58%] md:pr-12">
         <h2 className="font-display text-[22px]">Shipping details</h2>
@@ -215,7 +259,11 @@ export default function CheckoutForm() {
               {field("city", "City *", { autoComplete: "address-level2" })}
             </div>
             <div className="min-w-[150px] flex-1">
-              {field("state", "State *", { autoComplete: "address-level1" })}
+              {field("state", "State *", {
+                autoComplete: "address-level1",
+                list: "in-states",
+                autoCapitalize: "words",
+              })}
             </div>
             <div className="min-w-[120px] flex-1">
               {field("pin", "PIN code *", {
@@ -315,9 +363,13 @@ export default function CheckoutForm() {
             </p>
           )}
 
+          {/* Only the paid path writes to the CRM, so only it needs the
+              check. The enquiry path still goes out over WhatsApp. */}
+          {live && <Turnstile onToken={setTurnstileToken} />}
+
           <button
             type="submit"
-            disabled={busy}
+            disabled={busy || (live && !!TURNSTILE_SITE_KEY && !turnstileToken)}
             className="mt-5 w-full bg-espresso py-4 text-[12px] font-bold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-espresso-2 disabled:opacity-60"
           >
             {busy ? "Opening payment…" : live ? `Pay ${inr(total)}` : `Place order — ${inr(total)}`}
@@ -362,13 +414,25 @@ export default function CheckoutForm() {
         >
           <div className="w-full max-w-[420px] bg-white p-6">
             <h2 id="sent-title" className="font-display text-[22px]">
-              Did your WhatsApp message go through?
+              {confirming.paymentId ? "Payment received" : "One last step"}
             </h2>
             <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">
-              We opened WhatsApp with your order{" "}
-              <span className="font-semibold text-ink">{confirming.ref}</span>.
-              Press send there, then confirm below. Your bag is kept until you
-              do.
+              {confirming.paymentId ? (
+                <>
+                  Your order{" "}
+                  <span className="font-semibold text-ink">{confirming.ref}</span>{" "}
+                  is paid. We also opened WhatsApp with the itemised order and
+                  your shipping address — press send there so we can pack and
+                  dispatch it.
+                </>
+              ) : (
+                <>
+                  We opened WhatsApp with your order{" "}
+                  <span className="font-semibold text-ink">{confirming.ref}</span>.
+                  Press send there, then confirm below. Your bag is kept until
+                  you do.
+                </>
+              )}
             </p>
 
             <button
@@ -376,15 +440,7 @@ export default function CheckoutForm() {
               onClick={confirmSent}
               className="mt-5 w-full bg-espresso py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-espresso-2"
             >
-              Yes — order sent
-            </button>
-
-            <button
-              type="button"
-              onClick={() => window.open(waLink(confirming.text), "_blank", "noopener")}
-              className="mt-2.5 w-full border border-ink py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] transition-colors hover:bg-ink hover:text-white"
-            >
-              Open WhatsApp again
+              Sent — done
             </button>
 
             <button

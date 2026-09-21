@@ -178,7 +178,7 @@ export default function Header() {
               {ready && count > 0 && (
                 <span
                   suppressHydrationWarning
-                  className="absolute right-0 top-0 flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-maroon px-1 text-[9.5px] font-bold text-white"
+                  className="absolute right-0 top-0.5 flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-maroon px-1.5 text-[9px] font-bold leading-none tabular-nums text-white"
                 >
                   {count}
                 </span>
